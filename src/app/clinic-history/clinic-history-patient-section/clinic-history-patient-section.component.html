@@ -1,0 +1,52 @@
+<div>
+    <div style="width: 100%; height: fit-content; padding: 2px;"
+        class="text-center app-header-color">
+        <h2 style="color: white">{{ "Datos generales" | titlecase }}</h2>
+    </div>
+    <form>
+        <div class="container-fluid">
+            <div class="row p-3" style="background-color: rgb(243, 243, 243);">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="nameInput">Nombre</label>
+                        <input type="text" class="form-control" id="nameInput" placeholder="Ingresa el nombre">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="addressInput">Domicilio</label>
+                        <input type="text" class="form-control" id="addressInput" placeholder="Ingresa el domicilio">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="healthProviderEntityInput">Entidad</label>
+                        <input type="text" class="form-control" id="healthProviderEntityInput"
+                            placeholder="Ingresa la entidad">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="ocuppationInput">Ocupación</label>
+                        <input type="text" class="form-control" id="ocuppationInput" placeholder="Ingresa la ocupación">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="scolarshipInput">Escolaridad</label>
+                        <input type="text" class="form-control" id="scolarshipInput" placeholder="Ingresa la escolaridad">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="birthDateInput">Fecha de nacimiento</label>
+                        <input type="text" class="form-control" id="birthDateInput"
+                            placeholder="Ingresa la fecha de nacimiento">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="genderInput">Género</label>
+                        <select class="form-control" id="genderInput">
+                        </select>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="maritalStateInput">Estado civil</label>
+                        <select type="text" class="form-control" id="maritalStateInput"></select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
