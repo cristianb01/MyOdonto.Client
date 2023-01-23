@@ -1,6 +1,7 @@
 import { Gender } from "./enums";
 
 export interface Patient {
+    identification: string;
     name: string;
     address: string;
     healthProviderEntity: string;
