@@ -9,9 +9,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label class="form-control-label" for="IdentificationInput">Identification</label>
-                        <input type="text" class="form-control" id="IdentificationInput" formControlName="identification">
+                        <input type="text" list="patients" class="form-control" id="IdentificationInput" formControlName="identification">
+                        <datalist id="patients">
+                            <option value="value1">SOme value1</option>
+                            <option value="value2">Some value2</option>
+                        </datalist>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="nameInput">Nombre</label>
                         <input type="text" class="form-control" id="nameInput" placeholder="Ingresa el nombre"
                             formControlName="name">
@@ -31,15 +35,14 @@
                         <input type="text" class="form-control" id="ocuppationInput" placeholder="Ingresa la ocupación"
                             formControlName="occupation">
                     </div>
-                    
                 </div>
                 <div class="col-6">
-                    <div class="form-group mt-3">
+                    <div class="form-group">
                         <label for="scolarshipInput">Escolaridad</label>
                         <input type="text" class="form-control" id="scolarshipInput" placeholder="Ingresa la escolaridad"
                             formControlName="scolarship">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="birthDateInput">Fecha de nacimiento</label>
                         <input type="text" class="form-control" id="birthDateInput"
                             placeholder="Ingresa la fecha de nacimiento" formControlName="birthDate">

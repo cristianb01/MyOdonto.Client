@@ -22,7 +22,7 @@ export class ClinicHistoryContainerComponent {
     this.patientForm = this.createPatientForm();
     this.forms = this.createForms();
 
-    this.forms.valueChanges.subscribe(data => console.log(this.forms));
+    this.patientForm.controls['identification'].valueChanges.subscribe(data => console.log(this.forms));
   }
 
   private createForms(): FormGroup {
@@ -77,7 +77,6 @@ export class ClinicHistoryContainerComponent {
       creationDate: new Date,
       doctorId: 1,
       patientId: 1,
-      identification: "12312312", // TODO: Remove this field from entity
       patient: patient
     } as ClinicHistoryRequestModel;
   }
