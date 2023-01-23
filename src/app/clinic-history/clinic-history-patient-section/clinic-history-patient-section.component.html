@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="maritalStateInput">Estado civil</label>
-                        <select type="text" class="form-control" id="maritalStateInput">
+                        <select type="text" class="form-control" id="maritalStateInput" formControlName="maritalStatus">
                             <option *ngFor="let maritalState of maritalStatuses">
                                 {{ maritalState }}
                             </option>
