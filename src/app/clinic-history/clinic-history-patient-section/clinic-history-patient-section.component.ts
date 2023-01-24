@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Patient } from 'src/app/models/patient.model';
+import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
 
 @Component({
   selector: 'app-clinic-history-patient-section',

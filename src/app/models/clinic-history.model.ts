@@ -1,11 +1,11 @@
-import { Patient } from "./patient.model";
+import { PatientRequestModel } from "./patient.model";
 
 export interface ClinicHistoryRequestModel {
     expedient: string;
     creationDate: Date;
     doctorId: number;
     patientId: number;
-    patient: Patient
+    patient: PatientRequestModel
 }
 
 export interface ClinicHistoryResponseModel {

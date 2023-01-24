@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClinicHistoryRequestModel, ClinicHistoryResponseModel } from 'src/app/models/clinic-history.model';
-import { Patient } from 'src/app/models/patient.model';
+import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
 import { ClinicHistoryService } from 'src/app/services/clinic-history.service';
 
 @Component({
@@ -18,11 +18,14 @@ export class ClinicHistoryContainerComponent {
   public genderValues: string[] = ['male', 'female', 'other',]; // TODO: get this data from API
   public maritalStatuses: string[] = ['single', 'divorced', 'married', 'other',]; // TODO: get this data from API
 
-  constructor(private formbuilder: FormBuilder, private clinicHistoryService: ClinicHistoryService) {
+  constructor(private formbuilder: FormBuilder, 
+              private clinicHistoryService: ClinicHistoryService) {
     this.patientForm = this.createPatientForm();
-    this.forms = this.createForms();
+    this.forms = this.createForms();1
+  }
 
-    this.patientForm.controls['identification'].valueChanges.subscribe(data => console.log(this.forms));
+  private getPatientsFromForm(keyword: string) {
+
   }
 
   private createForms(): FormGroup {
@@ -55,8 +58,8 @@ export class ClinicHistoryContainerComponent {
     }
   }
 
-  private mapFormToPatientModel(): Patient {
-    let output: Patient = {
+  private mapFormToPatientModel(): PatientRequestModel {
+    let output: PatientRequestModel = {
       identification: this.patientForm.controls['identification'].value,
       name: this.patientForm.controls['name'].value,
       address: this.patientForm.controls['address'].value,
@@ -71,7 +74,7 @@ export class ClinicHistoryContainerComponent {
     return output;
   }
 
-  private createClinicHistoryModel(patient: Patient): ClinicHistoryRequestModel {
+  private createClinicHistoryModel(patient: PatientRequestModel): ClinicHistoryRequestModel {
     return {
       expedient: "23423",
       creationDate: new Date,
