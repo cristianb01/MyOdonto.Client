@@ -4,8 +4,8 @@ export interface ClinicHistoryRequestModel {
     expedient: string;
     creationDate: Date;
     doctorId: number;
-    patientId: number;
-    patient: PatientRequestModel
+    patientId?: number;
+    patient?: PatientRequestModel
 }
 
 export interface ClinicHistoryResponseModel {

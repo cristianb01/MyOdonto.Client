@@ -17,10 +17,6 @@ export class ClinicHistoryContainerComponent {
 
   private forms: FormGroup;
 
-  public genderValues: {description: string, id: number }[] = 
-    [{description: 'male', id: 1}, {description: 'female', id: 2 }, { description: 'other', id: 3 },]; // TODO: get this data from API
-  public maritalStatuses: string[] = ['single', 'divorced', 'married', 'other',]; // TODO: get this data from API
-
   public loadedPatient!: PatientResponseModel;
 
   constructor(private formbuilder: FormBuilder, 
@@ -57,7 +53,7 @@ export class ClinicHistoryContainerComponent {
       occupation: ['', [Validators.required, Validators.maxLength(100)]],
       scolarship: ['', [Validators.required, Validators.maxLength(100)]],
       birthDate: [null, Validators.required],
-      gender: [this.genderValues[0], Validators.required],
+      gender: [null, Validators.required],
       maritalStatus: [null, Validators.required]
     });
   }
@@ -87,13 +83,13 @@ export class ClinicHistoryContainerComponent {
   }
 
   private createClinicHistoryModel(patient: PatientRequestModel): ClinicHistoryRequestModel {
-    return {
-      expedient: "23423",
-      creationDate: new Date,
-      doctorId: 1,
-      patientId: 1,
-      patient: patient
-    } as ClinicHistoryRequestModel;
+    var requestModel: ClinicHistoryRequestModel = {
+      patient: patient,
+      creationDate: new Date(),
+      doctorId: 1, // TODO: remove
+      expedient: "123123", // TODO: remove
+    }
+    return requestModel;
   }
 
   private postClinicHistory(clinicHistory: ClinicHistoryRequestModel): Promise<ClinicHistoryResponseModel> {
