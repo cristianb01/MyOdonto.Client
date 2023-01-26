@@ -17,7 +17,8 @@ export class ClinicHistoryContainerComponent {
 
   private forms: FormGroup;
 
-  public genderValues: string[] = ['male', 'female', 'other',]; // TODO: get this data from API
+  public genderValues: {description: string, id: number }[] = 
+    [{description: 'male', id: 1}, {description: 'female', id: 2 }, { description: 'other', id: 3 },]; // TODO: get this data from API
   public maritalStatuses: string[] = ['single', 'divorced', 'married', 'other',]; // TODO: get this data from API
 
   public loadedPatient!: PatientResponseModel;

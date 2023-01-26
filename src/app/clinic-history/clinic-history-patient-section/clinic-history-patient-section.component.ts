@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Selects } from 'src/app/const/selects';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
 
 @Component({
@@ -11,12 +12,17 @@ export class ClinicHistoryPatientSectionComponent implements OnChanges {
 
   @Input('form') patientForm!: FormGroup;
 
-  @Input() genderValues!: string[]
-  @Input() maritalStatuses!: string[];
-
   @Input() patient!: PatientResponseModel;
 
   @Output() identificationInputBlur = new EventEmitter();
+
+  public readonly genders: { description: string, id: number }[];
+  public readonly maritalStatuses: { description: string, id: number }[];
+
+  constructor() {
+    this.genders = Selects.Genders;
+    this.maritalStatuses = Selects.MaritalStatuses;
+  }
   
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['patient'].currentValue) this.loadPatientToForm(changes['patient'].currentValue);

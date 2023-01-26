@@ -65,16 +65,16 @@
                     <mat-label>Gender</mat-label>
                     <mat-select formControlName="gender">
                         <mat-option *ngFor="let gender
-                        of genderValues" [value]="gender">
-                            {{ gender }}
+                        of genders" [value]="gender.id">
+                            {{ gender.description }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Marital Status</mat-label>
                     <mat-select formControlName="maritalStatus">
-                        <mat-option *ngFor="let status of maritalStatuses" [value]="status">
-                            {{ status }}
+                        <mat-option *ngFor="let status of maritalStatuses" [value]="status.id">
+                            {{ status.description }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
