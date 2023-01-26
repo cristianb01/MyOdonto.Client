@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 import { ClinicHistoryRequestModel, ClinicHistoryResponseModel } from 'src/app/models/clinic-history.model';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
 import { ClinicHistoryService } from 'src/app/services/clinic-history.service';
+import { PatientsService as PatientService } from 'src/app/services/patients.service';
 
 @Component({
   selector: 'app-clinic-history-container',
@@ -18,14 +20,23 @@ export class ClinicHistoryContainerComponent {
   public genderValues: string[] = ['male', 'female', 'other',]; // TODO: get this data from API
   public maritalStatuses: string[] = ['single', 'divorced', 'married', 'other',]; // TODO: get this data from API
 
+  public loadedPatient!: PatientResponseModel;
+
   constructor(private formbuilder: FormBuilder, 
-              private clinicHistoryService: ClinicHistoryService) {
+              private clinicHistoryService: ClinicHistoryService,
+              private patientService: PatientService) {
     this.patientForm = this.createPatientForm();
-    this.forms = this.createForms();1
+    this.forms = this.createForms();
   }
 
-  private getPatientsFromForm(keyword: string) {
-
+  public onIdentificationInputBlur() {
+    const identification = this.patientForm.controls['identification'].value;
+    if (identification) {
+      this.patientService.getPatient(identification)
+        .then(patientResponse => {
+          if(patientResponse) this.loadedPatient = patientResponse;
+        });
+    }
   }
 
   private createForms(): FormGroup {

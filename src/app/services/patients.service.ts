@@ -21,5 +21,9 @@ export class PatientsService {
     return await lastValueFrom(this.httpClient.get<PatientResponseModel[]>(`${this.apiUrl}`, {params}));
   }
 
+  public async getPatient(identification: string): Promise<PatientResponseModel> { 
+    return await lastValueFrom(this.httpClient
+      .get<PatientResponseModel>(`${this.apiUrl}/getByIdentification/${identification}`));
+  }
 
 }

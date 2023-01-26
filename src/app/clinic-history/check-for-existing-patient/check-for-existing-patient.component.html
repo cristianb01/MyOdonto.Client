@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <label for="identification">Identification</label>
+                    <input type="text" class="form-control" id="identification" formControlName="identification"
+                        [ngClass]="{'is-invalid': isFormInvalid('identification')}">
+                    <div *ngIf="isFormInvalid('identification')" class="invalid-feedback">
+                        Please enter a valid identification.
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Verify</button>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>

@@ -1,71 +1,84 @@
 <div>
-    <div style="width: 100%; height: fit-content; padding: 2px;"
-        class="text-center app-section-header-color">
+    <div style="width: 100%; height: fit-content; padding: 2px;" class="text-center app-section-header-color">
         <h3>{{ "Datos generales" | titlecase }}</h3>
     </div>
     <form [formGroup]="patientForm">
-        <div class="container-fluid app-section-container-color">
-            <div class="row p-3">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label class="form-control-label" for="IdentificationInput">Identification</label>
-                        <input type="text" list="patients" class="form-control" id="IdentificationInput" formControlName="identification">
-                        <datalist id="patients">
-                            <option value="value1">SOme value1</option>
-                            <option value="value2">Some value2</option>
-                        </datalist>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="nameInput">Nombre</label>
-                        <input type="text" class="form-control" id="nameInput" placeholder="Ingresa el nombre"
-                            formControlName="name">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="addressInput">Domicilio</label>
-                        <input type="text" class="form-control" id="addressInput" placeholder="Ingresa el domicilio"
-                            formControlName="address">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="healthProviderEntityInput">Entidad</label>
-                        <input type="text" class="form-control" id="healthProviderEntityInput"
-                            placeholder="Ingresa la entidad" formControlName="healthProviderEntity">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="ocuppationInput">Ocupación</label>
-                        <input type="text" class="form-control" id="ocuppationInput" placeholder="Ingresa la ocupación"
-                            formControlName="occupation">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="scolarshipInput">Escolaridad</label>
-                        <input type="text" class="form-control" id="scolarshipInput" placeholder="Ingresa la escolaridad"
-                            formControlName="scolarship">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="birthDateInput">Fecha de nacimiento</label>
-                        <input type="text" class="form-control" id="birthDateInput"
-                            placeholder="Ingresa la fecha de nacimiento" formControlName="birthDate">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="genderInput">Género</label>
-                        <select  class="form-control" id="genderInput">
-                            <option *ngFor="let gender of genderValues">
-                                {{ gender }}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="maritalStateInput">Estado civil</label>
-                        <select type="text" class="form-control" id="maritalStateInput" formControlName="maritalStatus">
-                            <option *ngFor="let maritalState of maritalStatuses">
-                                {{ maritalState }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
+        <div class="row py-3">
+            <div class="col-6">
+                <mat-form-field>
+                    <mat-label>Identification</mat-label>
+                    <input matInput placeholder="Identification" formControlName="identification" required
+                        (blur)="onIdentificationInputBlur()">
+                    <mat-error *ngIf="isControlInvalid('identification')">
+                        Identification is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name" required>
+                    <mat-error *ngIf="isControlInvalid('name')">
+                        Name is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Address" formControlName="address" required>
+                    <mat-error *ngIf="isControlInvalid('address')">
+                        Address is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Health Provider Entities</mat-label>
+                    <input matInput placeholder="Health Provider Entities" formControlName="healthProviderEntity"
+                        required>
+                    <mat-error *ngIf="isControlInvalid('healthProviderEntity')">
+                        Health Provider Entities is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Occupation</mat-label>
+                    <input matInput placeholder="Occupation" formControlName="occupation" required>
+                    <mat-error *ngIf="isControlInvalid('occupation')">
+                        Occupation is required
+                    </mat-error>
+                </mat-form-field>
             </div>
-
+            <div class="col-6">
+                <mat-form-field>
+                    <mat-label>Scholarship</mat-label>
+                    <input matInput placeholder="Scholarship" formControlName="scolarship" required>
+                    <mat-error *ngIf="isControlInvalid('scolarship')">
+                        Scholarship is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Birth Date</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birthDate"
+                        required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="isControlInvalid('birthDate')">
+                        Birth Date is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender">
+                        <mat-option *ngFor="let gender
+                        of genderValues" [value]="gender">
+                            {{ gender }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Marital Status</mat-label>
+                    <mat-select formControlName="maritalStatus">
+                        <mat-option *ngFor="let status of maritalStatuses" [value]="status">
+                            {{ status }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
+
     </form>
-</div>

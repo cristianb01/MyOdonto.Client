@@ -14,9 +14,10 @@ export interface PatientRequestModel {
 
 
 export interface PatientResponseModel {
-    id: string;
+    id: number;
     name: string;
     address: string;
+    identification: string;
     healthProviderEntity: string;
     occupation: string;
     scolarship: string;
