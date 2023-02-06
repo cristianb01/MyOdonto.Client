@@ -1,0 +1,16 @@
+<div style="width: 100%; height: fit-content; padding: 2px;" class="text-center app-section-header-color">
+    <h3>{{ "Datos generales" | titlecase }}</h3>
+</div>
+<div class="row row-cols-2">
+    <div class="col" *ngFor="let personalBackgroundType of pathologicalPersonalBackgroundTypes">
+        <form>
+            <mat-form-field>
+                <mat-label>Identification</mat-label>
+                    <input matInput placeholder="Identification" formControlName="identification" required>
+                    <mat-error *ngIf="isControlInvalid('identification')">
+                        Identification is required
+                    </mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+</div>

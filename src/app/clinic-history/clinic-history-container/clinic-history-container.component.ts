@@ -14,6 +14,7 @@ import { PatientsService as PatientService } from 'src/app/services/patients.ser
 export class ClinicHistoryContainerComponent {
   
   public patientForm: FormGroup;
+  public pathologicalPersonalBackgroundForm!: FormGroup;
 
   private forms: FormGroup;
 
@@ -22,7 +23,9 @@ export class ClinicHistoryContainerComponent {
   constructor(private formbuilder: FormBuilder, 
               private clinicHistoryService: ClinicHistoryService,
               private patientService: PatientService) {
+
     this.patientForm = this.createPatientForm();
+    this.pathologicalPersonalBackgroundForm = this.createPathologicalPersonalBackgroundForm();
     this.forms = this.createForms();
   }
 
@@ -40,7 +43,14 @@ export class ClinicHistoryContainerComponent {
     return this.formbuilder.group({
       forms: this.formbuilder.array([
         this.patientForm,
+        this.pathologicalPersonalBackgroundForm
       ])
+    });
+  }
+
+  private createPathologicalPersonalBackgroundForm(): FormGroup {
+    return this.formbuilder.group({
+      pathologicalPersonalBackgroundForms: this.formbuilder.array([])
     });
   }
 
