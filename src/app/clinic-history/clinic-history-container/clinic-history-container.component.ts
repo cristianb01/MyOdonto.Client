@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { ClinicHistoryRequestModel, ClinicHistoryResponseModel } from 'src/app/models/clinic-history.model';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
@@ -14,9 +14,6 @@ import { PatientsService as PatientService } from 'src/app/services/patients.ser
 export class ClinicHistoryContainerComponent {
   
   public patientForm: FormGroup;
-  public pathologicalPersonalBackgroundForm!: FormGroup;
-
-  private forms: FormGroup;
 
   public loadedPatient!: PatientResponseModel;
 
@@ -25,8 +22,6 @@ export class ClinicHistoryContainerComponent {
               private patientService: PatientService) {
 
     this.patientForm = this.createPatientForm();
-    this.pathologicalPersonalBackgroundForm = this.createPathologicalPersonalBackgroundForm();
-    this.forms = this.createForms();
   }
 
   public onIdentificationInputBlur() {
@@ -37,21 +32,6 @@ export class ClinicHistoryContainerComponent {
           if(patientResponse) this.loadedPatient = patientResponse;
         });
     }
-  }
-
-  private createForms(): FormGroup {
-    return this.formbuilder.group({
-      forms: this.formbuilder.array([
-        this.patientForm,
-        this.pathologicalPersonalBackgroundForm
-      ])
-    });
-  }
-
-  private createPathologicalPersonalBackgroundForm(): FormGroup {
-    return this.formbuilder.group({
-      pathologicalPersonalBackgroundForms: this.formbuilder.array([])
-    });
   }
 
   private createPatientForm(): FormGroup {
@@ -69,7 +49,7 @@ export class ClinicHistoryContainerComponent {
   }
 
   public submit(): void {
-    if (this.forms.valid) {
+    if (this.patientForm.valid) {
       let patient = this.mapFormToPatientModel();
       let clinicHistory = this.createClinicHistoryModel(patient);
       this.postClinicHistory(clinicHistory).then(response => console.log(response));

@@ -1,16 +1,41 @@
 <div style="width: 100%; height: fit-content; padding: 2px;" class="text-center app-section-header-color">
     <h3>{{ "Datos generales" | titlecase }}</h3>
 </div>
-<div class="row row-cols-2">
-    <div class="col" *ngFor="let personalBackgroundType of pathologicalPersonalBackgroundTypes">
-        <form>
-            <mat-form-field>
-                <mat-label>Identification</mat-label>
-                    <input matInput placeholder="Identification" formControlName="identification" required>
-                    <mat-error *ngIf="isControlInvalid('identification')">
-                        Identification is required
-                    </mat-error>
-            </mat-form-field>
-        </form>
-    </div>
+
+<div class="py-3">
+    <form *ngIf="pathologicalPersonalBackgroundForm" [formGroup]="pathologicalPersonalBackgroundForm">
+        <div class="container-fluid">
+            <div class="row row-cols-2">
+                <ng-container formArrayName="mainForm">
+                    <div class="col-6" *ngFor="let currentForm of getFormArray.controls; index as i">
+                        <ng-container [formGroupName]="i">
+                            <div class="container-fluid">
+                                <div class="row" [ngStyle]="{'margin-right': i%2==0 ? '58px' : '0px', 'margin-left': i%2==0 ? '0px': '58px' }">
+                                    <div class="col">
+                                        <mat-checkbox
+                                            formControlName="hasSufferedFrom">{{currentForm.get('description')?.value}}</mat-checkbox>
+                                        <mat-error *ngIf="isFormInvalid(i, 'hasSufferedFrom') else emptyTemplate">Debe diligenciar este campo</mat-error>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field>
+                                            <mat-label>Fecha</mat-label>
+                                            <input matInput [matDatepicker]="picker" formControlName="date">
+                                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                        <mat-error *ngIf="isFormInvalid(i, 'date') else emptyTemplate">Debe diligenciar este campo</mat-error>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <button (click)="submit()"></button>
+    </form>
 </div>
+
+<ng-template #emptyTemplate>
+    <p>&nbsp;</p>
+</ng-template>
