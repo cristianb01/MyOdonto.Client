@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { PathologicalPersonalBackgroundType } from 'src/app/models/pathological-personal-background';
+import { PathologicalPersonalBackgroundType } from 'src/app/models/pathological-personal-background-type.model';
 import { PathologicalPersonalBackgroundTypesService } from 'src/app/services/pathological-personal-background-types.service';
 import { MatFormFieldControl } from '@angular/material/form-field';
+import { PathologicalPersonalBackground } from 'src/app/models/pathological-personal-background.model';
 
 @Component({
   selector: 'app-pathological-personal-background',
@@ -15,13 +16,15 @@ export class PathologicalPersonalBackgroundComponent {
 
   pathologicalPersonalBackgroundForm!: FormGroup;;
 
+  @Output() onFormSubmit = new EventEmitter<any>();
+
   constructor(private pathologicalPersonalBackgroundService: PathologicalPersonalBackgroundTypesService,
               private formbuilder: FormBuilder) {
     this.getAllPathologicalPersonalBackgroundTypes()
       .then(pathologicalPersonalBackgroundTypes => {
         this.pathologicalPersonalBackgroundTypes = pathologicalPersonalBackgroundTypes;
         this.pathologicalPersonalBackgroundForm = this.createForm();
-        this.asdf();
+        this.startChekingHasSufferedFromCheckBox();
       });;
   }
 
@@ -31,7 +34,7 @@ export class PathologicalPersonalBackgroundComponent {
     return this.pathologicalPersonalBackgroundService.getAllPathologicalPersonalBackgroundTypes();
   }
   
-  createForm() {
+  private createForm(): FormGroup {
     let forms = this.pathologicalPersonalBackgroundTypes.map((type) => {
       return this.formbuilder.group({
         description: [type.description],
@@ -58,15 +61,28 @@ export class PathologicalPersonalBackgroundComponent {
     return control.invalid;
   }
 
-  public submit() {
-    debugger;
-
-    if (this.getFormArray.valid) {
-      // TODO: post to api
+  public submit(): boolean {
+    if (this.pathologicalPersonalBackgroundForm.valid) {
+      const mappedModel = this.mapFormToModel();
+      this.onFormSubmit.emit(mappedModel);
+      return true;
     }
+    return false;
   }
 
-  private asdf () {
+  private mapFormToModel(): PathologicalPersonalBackground[] {
+    const output = this.getFormArray.controls.map(currentForm => {
+      return {
+        date: currentForm.get('date')?.value,
+        hasSufferedFrom: currentForm.get('hasSufferedFrom')?.value,
+        pathologicalPersonalBackgroundTypeId: currentForm.get('id')?.value
+      } as PathologicalPersonalBackground
+    });
+
+    return output;
+  }
+
+  private startChekingHasSufferedFromCheckBox(): void {
     
     this.getFormArray.controls.forEach((currentForm) => {
       currentForm.get('hasSufferedFrom')?.valueChanges.subscribe((value) => !value ? currentForm.get('date')?.setValue(null) : null);

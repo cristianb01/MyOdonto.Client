@@ -1,5 +1,5 @@
 export interface PathologicalPersonalBackground {
-    observations: string;
+    observations?: string;
     date: Date;
     hasSufferedFrom: boolean;
     pathologicalPersonalBackgroundTypeId: number;

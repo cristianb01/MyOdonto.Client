@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { PathologicalPersonalBackgroundType } from '../models/pathological-personal-background';
+import { PathologicalPersonalBackgroundType } from '../models/pathological-personal-background-type.model';
 
 @Injectable({
   providedIn: 'root'

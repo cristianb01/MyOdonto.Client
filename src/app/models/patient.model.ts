@@ -1,6 +1,7 @@
 import { Gender } from "./enums";
 
 export interface PatientRequestModel {
+    id?: string;
     identification: string;
     name: string;
     address: string;

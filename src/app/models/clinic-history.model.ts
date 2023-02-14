@@ -1,11 +1,25 @@
+import { PathologicalPersonalBackground } from "./pathological-personal-background.model";
 import { PatientRequestModel } from "./patient.model";
 
-export interface ClinicHistoryRequestModel {
-    expedient: string;
-    creationDate: Date;
-    doctorId: number;
-    patientId?: number;
-    patient?: PatientRequestModel
+export class ClinicHistoryRequestModel {
+    public expedient: string | null;
+    public creationDate: Date | null;
+    public doctorId: number | null;
+    public patientId?: number | null;
+    public patient: PatientRequestModel | null;
+    public pathologicalPersonalBackgrounds: PathologicalPersonalBackground[] | null;
+
+    /**
+     *
+     */
+    constructor() {
+        this.expedient = null;
+        this.creationDate = null;
+        this.doctorId = null;
+        this.patientId = null;
+        this.patient = null;
+        this.pathologicalPersonalBackgrounds = null;
+    }
 }
 
 export interface ClinicHistoryResponseModel {
