@@ -13,13 +13,14 @@ import { PatientsService as PatientService } from 'src/app/services/patients.ser
 export class ClinicHistoryPatientSectionComponent implements OnChanges {
 
   @Input() patient!: PatientResponseModel;
-  @Output() onFormSubmit = new EventEmitter<PatientRequestModel>();
+  @Output() onFormSubmit = new EventEmitter<PatientRequestModel | number>();
   
   public patientForm: FormGroup;
 
   public readonly genders: { description: string, id: number }[];
 
   public readonly maritalStatuses: { description: string, id: number }[];
+  private isPatientInfoRetrieved: boolean = false;
 
   constructor(private patientService: PatientService,
               private formbuilder: FormBuilder) {
@@ -34,7 +35,10 @@ export class ClinicHistoryPatientSectionComponent implements OnChanges {
 
   loadPatientToForm(patient: PatientResponseModel) {
     for(const property in patient) {
-      if (this.patientForm.controls[property]) this.patientForm.controls[property].setValue(patient[property as keyof PatientResponseModel])
+      if (this.patientForm.controls[property]) {
+        this.patientForm.controls[property].setValue(patient[property as keyof PatientResponseModel]);
+        this.isPatientInfoRetrieved = true;
+      }
     }
   }
 
@@ -68,11 +72,10 @@ export class ClinicHistoryPatientSectionComponent implements OnChanges {
   }
 
   
-  private mapFormToPatientModel(): PatientRequestModel {
+  private mapFormToPatientModel(): PatientRequestModel | number {
     // TODO: send only patientId when patient has been feeded
-  
+    if (this.isPatientInfoRetrieved) return this.patientForm.controls['id'].value;
     let output: PatientRequestModel = {
-      id: this.patientForm.controls['id'].value,
       identification: this.patientForm.controls['identification'].value,
       name: this.patientForm.controls['name'].value,
       address: this.patientForm.controls['address'].value,

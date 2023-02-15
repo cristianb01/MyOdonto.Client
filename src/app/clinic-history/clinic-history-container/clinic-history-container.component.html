@@ -3,11 +3,11 @@
     <app-clinic-history-patient-section 
         #patientForm
         [patient]="loadedPatient"
-        (onFormSubmit)="onFormSubmit($event, 'patient')">
+        (onFormSubmit)="onFormSubmit($event, SectionNames.patient)">
     </app-clinic-history-patient-section>
     <app-pathological-personal-background 
         #pathologicalPersonalBackgroundForm 
-        (onFormSubmit)="onFormSubmit($event, 'pathologicalPersonalBackgrounds')">
+        (onFormSubmit)="onFormSubmit($event, SectionNames.pathologicalPersonalBackgrounds)">
     </app-pathological-personal-background>
     <button type="button" class="btn btn-primary" (click)="submit()">Guardar</button>
 </div>

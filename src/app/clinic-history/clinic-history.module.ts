@@ -13,6 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { PathologicalPersonalBackgroundComponent } from './pathological-personal-background/pathological-personal-background.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatButtonModule
   ],
   exports: [MatFormFieldModule]
 })

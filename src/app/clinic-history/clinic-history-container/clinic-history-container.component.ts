@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import { SectionNames } from 'src/app/const/sections-names';
 import { ClinicHistoryRequestModel, ClinicHistoryResponseModel } from 'src/app/models/clinic-history.model';
 import { PathologicalPersonalBackground } from 'src/app/models/pathological-personal-background.model';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
@@ -22,6 +23,8 @@ export class ClinicHistoryContainerComponent {
   public clinicHistory: ClinicHistoryRequestModel = new ClinicHistoryRequestModel();
 
   public loadedPatient!: PatientResponseModel;
+
+  public readonly SectionNames = SectionNames;
 
   constructor(private clinicHistoryService: ClinicHistoryService) {
   }
@@ -50,6 +53,11 @@ export class ClinicHistoryContainerComponent {
   }
 
   public onFormSubmit($event: any, sectionName: string) {
-    (this.clinicHistory)[sectionName as keyof ClinicHistoryRequestModel] = $event;
+    if (sectionName === SectionNames.patient && typeof($event) === 'number') {
+      this.clinicHistory.patientId = $event;
+    }
+    else {
+      (this.clinicHistory)[sectionName as keyof ClinicHistoryRequestModel] = $event;
+    }
   }
 }
