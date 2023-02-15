@@ -1,7 +1,4 @@
-<div style="width: 100%; height: fit-content; padding: 2px;" class="text-center app-section-header-color">
-    <h3>{{ "Datos generales" | titlecase }}</h3>
-</div>
-
+<app-section-header [width]="100" title="Antecedentes personales y patológicos"></app-section-header>
 <div class="py-3">
     <form *ngIf="pathologicalPersonalBackgroundForm" [formGroup]="pathologicalPersonalBackgroundForm">
         <div class="container-fluid">

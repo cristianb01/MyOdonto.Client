@@ -1,7 +1,5 @@
 <div>
-    <div style="width: 100%; height: fit-content; padding: 2px;" class="text-center app-section-header-color">
-        <h3>{{ "Datos generales" | titlecase }}</h3>
-    </div>
+    <app-section-header title="Datos generales" [width]="100"></app-section-header>
     <form [formGroup]="patientForm" class="py-3">
         <div class="row">
             <div class="col-6">
