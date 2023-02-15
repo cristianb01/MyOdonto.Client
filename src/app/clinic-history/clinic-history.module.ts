@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { PathologicalPersonalBackgroundComponent } from './pathological-personal-background/pathological-personal-background.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
+import { FamilyBackgroundComponent } from './family-background/family-background.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatButtonModule} from '@angular/material/button';
     ClinicHistoryHeaderComponent,
     ClinicHistoryPatientSectionComponent,
     ClinicHistoryContainerComponent,
-    PathologicalPersonalBackgroundComponent
+    PathologicalPersonalBackgroundComponent,
+    FamilyBackgroundComponent
   ],
   imports: [
     CommonModule,
