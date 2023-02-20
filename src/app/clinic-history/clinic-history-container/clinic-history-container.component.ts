@@ -45,13 +45,6 @@ export class ClinicHistoryContainerComponent {
     }
   }
 
-  private isClinicHistoryModelWellConstructed(): boolean {
-    for (const property in this.clinicHistory) {
-      if (this.clinicHistory[property as keyof ClinicHistoryRequestModel] === null) return false;
-    }
-    return true;
-  }
-
   public onFormSubmit($event: any, sectionName: string) {
     if (sectionName === SectionNames.patient && typeof($event) === 'number') {
       this.clinicHistory.patientId = $event;

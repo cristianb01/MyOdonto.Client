@@ -16,7 +16,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { FamilyBackgroundComponent } from './family-background/family-background.component';
 import { AppCommonModule } from '../app-common/app-common.module';
-
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { AppCommonModule } from '../app-common/app-common.module';
     MatCheckboxModule,
     MatFormFieldModule,
     MatButtonModule,
-    AppCommonModule
+    AppCommonModule,
+    MatTableModule
   ],
   exports: [MatFormFieldModule]
 })

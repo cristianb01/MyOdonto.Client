@@ -1,13 +1,11 @@
 <div style="border: 15px solid #2c8db1;" class="container">
     <app-clinic-history-header></app-clinic-history-header>
-    <app-clinic-history-patient-section 
-        #patientForm
-        [patient]="loadedPatient"
+    <app-clinic-history-patient-section #patientForm [patient]="loadedPatient"
         (onFormSubmit)="onFormSubmit($event, SectionNames.patient)">
     </app-clinic-history-patient-section>
-    <app-pathological-personal-background 
-        #pathologicalPersonalBackgroundForm 
+    <app-pathological-personal-background #pathologicalPersonalBackgroundForm
         (onFormSubmit)="onFormSubmit($event, SectionNames.pathologicalPersonalBackgrounds)">
     </app-pathological-personal-background>
+    <app-family-background></app-family-background>
     <button type="button" class="btn btn-primary" (click)="submit()">Guardar</button>
 </div>
