@@ -16,7 +16,8 @@ export class FamilyBackgroundComponent {
 
   public familyBackgroundForm!: FormGroup;
 
-  public headers = ['description', 'mother'];
+  public headers = ['description', 'mother', 'maternalGrandmother', 'maternalGrandfather', 'maternalOthers',
+                    'father', 'paternalGrandmother', 'paternalGrandfather', 'paternalOthers'];
 
   public dataSource = new MatTableDataSource();
 
@@ -43,8 +44,8 @@ export class FamilyBackgroundComponent {
         maternalGrandmother: false,
         maternalOthers: false,
         paternalOthers: false,
-        paternalGrandFather: false,
-        paternalGrandMother: false,
+        paternalGrandfather: false,
+        paternalGrandmother: false,
       });
     });
 

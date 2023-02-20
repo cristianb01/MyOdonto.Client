@@ -1,8 +1,8 @@
-<div style="border: 15px solid #2c8db1;" class="container">
+<div class="container p-5 mat-elevation-z10">
     <app-clinic-history-header></app-clinic-history-header>
-    <app-clinic-history-patient-section #patientForm [patient]="loadedPatient"
-        (onFormSubmit)="onFormSubmit($event, SectionNames.patient)">
-    </app-clinic-history-patient-section>
+        <app-clinic-history-patient-section #patientForm [patient]="loadedPatient"
+            (onFormSubmit)="onFormSubmit($event, SectionNames.patient)">
+        </app-clinic-history-patient-section>
     <app-pathological-personal-background #pathologicalPersonalBackgroundForm
         (onFormSubmit)="onFormSubmit($event, SectionNames.pathologicalPersonalBackgrounds)">
     </app-pathological-personal-background>
