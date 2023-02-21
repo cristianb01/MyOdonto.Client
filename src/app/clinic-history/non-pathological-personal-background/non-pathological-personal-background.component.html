@@ -2,7 +2,7 @@
 
 <div class="py-3">
     <form *ngIf="nonPathologicalPersonalBackgroundForm" [formGroup]="nonPathologicalPersonalBackgroundForm">
-        <div class="row row-cols-4">
+        <div class="row row-cols-3 d-flex justify-content-between">
             <div class="col" *ngFor="let currentForm of getFormArray.controls; index as i">
                 <ng-container formArrayName="mainForm">
                     <ng-container [formGroupName]="i">
@@ -13,19 +13,20 @@
                                         <h2 class="mat-body-strong m-0" >{{currentForm.get('description')?.value}}</h2>
                                     </mat-checkbox>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <mat-form-field>
-                                            <mat-label>Observaciones</mat-label>
-                                            <textarea matInput
-                                                      formControlName="observations"
-                                                      cdkTextareaAutosize
-                                                      #autosize="cdkTextareaAutosize"
-                                                      cdkAutosizeMinRows="1"
-                                                      cdkAutosizeMaxRows="5">
-                                            </textarea>
-                                        </mat-form-field>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Observaciones</mat-label>
+                                        <textarea matInput
+                                                  formControlName="observations"
+                                                  cdkTextareaAutosize
+                                                  #autosize="cdkTextareaAutosize"
+                                                  cdkAutosizeMinRows="1"
+                                                  cdkAutosizeMaxRows="5"
+                                                  formControlName="observation">
+                                        </textarea>
+                                    </mat-form-field>
                                 </div>
                             </div>
                         </div>

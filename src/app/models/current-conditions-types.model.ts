@@ -1,4 +1,4 @@
-export interface FamilyBackgroundType {
+export interface currentConditionType {
     id: number;
     description: string;
 }

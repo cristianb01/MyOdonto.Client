@@ -10,3 +10,8 @@ export interface FamilyBackground {
     paternalOthers: boolean;
     familyBackgroundTypeId: number;
 }
+
+export interface FamilyBackgroundFormResultWrapper {
+    observations: string,
+    familyBackgrounds: FamilyBackground[];
+}

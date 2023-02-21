@@ -7,15 +7,15 @@ import { SectionType } from '../models/section-type.model';
 @Injectable({
   providedIn: 'root'
 })
-export class NonPathologicalPersonalBackgroundService {
+export class CurrentConditionsService {
 
   private readonly apiUrl: string;
 
-  constructor(private httpClient: HttpClient) {
-    this.apiUrl = `${environment.apiUrl}/nonPathologicalPersonalBackgroundTypes`;
+  constructor(private httpClient: HttpClient) { 
+    this.apiUrl = `${environment.apiUrl}/currentConditionTypes`;
   }
 
-  public getAllNonPathologicalPersonalBackgroundTypes(): Promise<SectionType[]> {
+  public getAllCurrentConditions(): Promise<SectionType[]> {
     return lastValueFrom(this.httpClient.get<SectionType[]>(this.apiUrl));
   }
 }

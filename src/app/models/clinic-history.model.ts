@@ -9,6 +9,7 @@ export class ClinicHistoryRequestModel {
     public patient: PatientRequestModel | null;
     public pathologicalPersonalBackgrounds: PathologicalPersonalBackground[] | null;
     public familyBackgroundObservations: string | null;
+    public nonPathologicalPersonalBackgrounds: PathologicalPersonalBackground[] | null;
 
     /**
      *
@@ -21,6 +22,7 @@ export class ClinicHistoryRequestModel {
         this.patient = null;
         this.pathologicalPersonalBackgrounds = null;
         this.familyBackgroundObservations = null;
+        this.nonPathologicalPersonalBackgrounds = null;
     }
 }
 

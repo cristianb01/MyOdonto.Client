@@ -9,6 +9,7 @@ import { ClinicHistoryService } from 'src/app/services/clinic-history.service';
 import { PatientsService as PatientService } from 'src/app/services/patients.service';
 import { ClinicHistoryPatientSectionComponent } from '../clinic-history-patient-section/clinic-history-patient-section.component';
 import { FamilyBackgroundComponent } from '../family-background/family-background.component';
+import { NonPathologicalPersonalBackgroundComponent } from '../non-pathological-personal-background/non-pathological-personal-background.component';
 import { PathologicalPersonalBackgroundComponent } from '../pathological-personal-background/pathological-personal-background.component';
 
 @Component({
@@ -21,6 +22,7 @@ export class ClinicHistoryContainerComponent {
   @ViewChild('pathologicalPersonalBackgroundForm') pathologicalPersonalBackgroundForm!: PathologicalPersonalBackgroundComponent;
   @ViewChild('patientForm') patientForm!: ClinicHistoryPatientSectionComponent;
   @ViewChild('familyBackground') familyBackgroundForm!: FamilyBackgroundComponent;
+  @ViewChild('nonPathologicalPersonalBackgroundForm') nonPathologicalPersonalBackgroundForm!: NonPathologicalPersonalBackgroundComponent;
 
   public clinicHistory: ClinicHistoryRequestModel = new ClinicHistoryRequestModel();
 
@@ -40,6 +42,7 @@ export class ClinicHistoryContainerComponent {
       this.pathologicalPersonalBackgroundForm.submit() 
       && this.patientForm.submit()
       && this.familyBackgroundForm.submit()
+      && this.nonPathologicalPersonalBackgroundForm.submit()
     ) {
       this.clinicHistory.creationDate = new Date(),
       this.clinicHistory.doctorId = 1, // TODO: remove

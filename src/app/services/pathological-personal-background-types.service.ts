@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { PathologicalPersonalBackgroundType } from '../models/pathological-personal-background-type.model';
+import { SectionType } from '../models/section-type.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class PathologicalPersonalBackgroundTypesService {
     this.apiUrl = `${environment.apiUrl}/pathologicalPersonalBackgroundTypes`;
   }
   
-  public async getAllPathologicalPersonalBackgroundTypes(): Promise<PathologicalPersonalBackgroundType[]> {
-    return await lastValueFrom(this.httpClient.get<PathologicalPersonalBackgroundType[]>(this.apiUrl));
+  public async getAllPathologicalPersonalBackgroundTypes(): Promise<SectionType[]> {
+    return await lastValueFrom(this.httpClient.get<SectionType[]>(this.apiUrl));
   }
 
 }

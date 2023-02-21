@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { PathologicalPersonalBackgroundType } from 'src/app/models/pathological-personal-background-type.model';
+import { SectionType } from 'src/app/models/pathological-personal-background-type.model';
 import { PathologicalPersonalBackgroundTypesService } from 'src/app/services/pathological-personal-background-types.service';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { PathologicalPersonalBackground } from 'src/app/models/pathological-personal-background.model';
@@ -12,7 +12,7 @@ import { PathologicalPersonalBackground } from 'src/app/models/pathological-pers
 })
 export class PathologicalPersonalBackgroundComponent {
 
-  public pathologicalPersonalBackgroundTypes!: PathologicalPersonalBackgroundType[];
+  public pathologicalPersonalBackgroundTypes!: SectionType[];
 
   pathologicalPersonalBackgroundForm!: FormGroup;;
 
@@ -30,7 +30,7 @@ export class PathologicalPersonalBackgroundComponent {
 
 
   
-  private getAllPathologicalPersonalBackgroundTypes(): Promise<PathologicalPersonalBackgroundType[]> {
+  private getAllPathologicalPersonalBackgroundTypes(): Promise<SectionType[]> {
     return this.pathologicalPersonalBackgroundService.getAllPathologicalPersonalBackgroundTypes();
   }
   

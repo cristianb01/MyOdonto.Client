@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject } from 'rxjs';
-import { FamilyBackgroundType } from 'src/app/models/family-background-type.model';
-import { FamilyBackground } from 'src/app/models/family-background.model';
+import { SectionType } from 'src/app/models/family-background-type.model';
+import { FamilyBackground, FamilyBackgroundFormResultWrapper } from 'src/app/models/family-background.model';
 import { FamilyBackgroundService } from 'src/app/services/family-background.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class FamilyBackgroundComponent {
 
   @Output() onFormSubmit = new EventEmitter<any>();
 
-  public familyBackgroundTypes!: FamilyBackgroundType[];
+  public familyBackgroundTypes!: SectionType[];
 
   public familyBackgroundForm!: FormGroup;
 
@@ -58,7 +58,7 @@ export class FamilyBackgroundComponent {
     });
   }
 
-  private getFamilyBackgroundTypes(): Promise<FamilyBackgroundType[]> {
+  private getFamilyBackgroundTypes(): Promise<SectionType[]> {
     return this.familyBackgroundService.getAllFamilyBackgroundTypes();
   }
 
@@ -68,7 +68,7 @@ export class FamilyBackgroundComponent {
     return true;
   }
 
-  private mapFormToModel(): any  {
+  private mapFormToModel(): FamilyBackgroundFormResultWrapper  {
     return {
         observations: this.familyBackgroundForm.get('observations')?.value,
         familyBackgrounds: this.getFormArray.controls.map(currentForm => {
