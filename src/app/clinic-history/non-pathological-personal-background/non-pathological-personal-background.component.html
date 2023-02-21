@@ -1,0 +1,37 @@
+<app-section-header title="Antecedentes personales no hereditarios"></app-section-header>
+
+<div class="py-3">
+    <form *ngIf="nonPathologicalPersonalBackgroundForm" [formGroup]="nonPathologicalPersonalBackgroundForm">
+        <div class="row row-cols-4">
+            <div class="col" *ngFor="let currentForm of getFormArray.controls; index as i">
+                <ng-container formArrayName="mainForm">
+                    <ng-container [formGroupName]="i">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <mat-checkbox formControlName="hasSufferedFrom">
+                                        <h2 class="mat-body-strong m-0" >{{currentForm.get('description')?.value}}</h2>
+                                    </mat-checkbox>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-form-field>
+                                            <mat-label>Observaciones</mat-label>
+                                            <textarea matInput
+                                                      formControlName="observations"
+                                                      cdkTextareaAutosize
+                                                      #autosize="cdkTextareaAutosize"
+                                                      cdkAutosizeMinRows="1"
+                                                      cdkAutosizeMaxRows="5">
+                                            </textarea>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </form>
+</div>

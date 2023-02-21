@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FamilyBackgroundComponent } from './family-background/family-background.component';
 import { AppCommonModule } from '../app-common/app-common.module';
 import {MatTableModule} from '@angular/material/table';
+import { NonPathologicalPersonalBackgroundComponent } from './non-pathological-personal-background/non-pathological-personal-background.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatTableModule} from '@angular/material/table';
     ClinicHistoryPatientSectionComponent,
     ClinicHistoryContainerComponent,
     PathologicalPersonalBackgroundComponent,
-    FamilyBackgroundComponent
+    FamilyBackgroundComponent,
+    NonPathologicalPersonalBackgroundComponent
 
   ],
   imports: [

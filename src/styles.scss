@@ -37,7 +37,7 @@ $MyOdonto-theme: mat.define-light-theme((
 
 .app-section-header-color {
     background-color: #2c8db1 !important;
-    h3 {
+    h3, h2, h1 {
         color: white;
     }
 }

@@ -62,5 +62,17 @@
                 </td>
             </ng-container>
         </table>
+        <div class="mt-5">
+            <mat-form-field style="width: 60%;">
+                <mat-label>Observaciones</mat-label>
+                <textarea matInput
+                          cdkTextareaAutosize
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="1"
+                          cdkAutosizeMaxRows="5"
+                          formControlName="observations">
+                </textarea>
+            </mat-form-field>
+        </div>
     </form>
 </div>

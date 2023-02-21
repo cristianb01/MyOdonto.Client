@@ -6,6 +6,9 @@
     <app-pathological-personal-background #pathologicalPersonalBackgroundForm
         (onFormSubmit)="onFormSubmit($event, SectionNames.pathologicalPersonalBackgrounds)">
     </app-pathological-personal-background>
-    <app-family-background></app-family-background>
+    <app-family-background #familyBackground 
+        (onFormSubmit)="onFormSubmit($event, SectionNames.familyBackgrounds)">
+    </app-family-background>
+    <app-non-pathological-personal-background></app-non-pathological-personal-background>
     <button type="button" class="btn btn-primary" (click)="submit()">Guardar</button>
 </div>
