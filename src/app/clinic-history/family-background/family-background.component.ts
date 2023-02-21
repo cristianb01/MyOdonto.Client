@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { BehaviorSubject } from 'rxjs';
-import { SectionType } from 'src/app/models/family-background-type.model';
 import { FamilyBackground, FamilyBackgroundFormResultWrapper } from 'src/app/models/family-background.model';
+import { SectionType } from 'src/app/models/section-type.model';
 import { FamilyBackgroundService } from 'src/app/services/family-background.service';
 
 @Component({

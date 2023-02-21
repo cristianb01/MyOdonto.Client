@@ -18,7 +18,7 @@ import { FamilyBackgroundComponent } from './family-background/family-background
 import { AppCommonModule } from '../app-common/app-common.module';
 import {MatTableModule} from '@angular/material/table';
 import { NonPathologicalPersonalBackgroundComponent } from './non-pathological-personal-background/non-pathological-personal-background.component';
-import { CurrenConditionsComponent as CurrentConditionsComponent } from './current-conditions/current-conditions.component';
+import { CurrentConditionsComponent as CurrentConditionsComponent } from './current-conditions/current-conditions.component';
 
 @NgModule({
   declarations: [

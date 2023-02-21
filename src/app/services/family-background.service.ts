@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { SectionType } from '../models/family-background-type.model';
+import { SectionType } from '../models/section-type.model';
 
 @Injectable({
   providedIn: 'root'

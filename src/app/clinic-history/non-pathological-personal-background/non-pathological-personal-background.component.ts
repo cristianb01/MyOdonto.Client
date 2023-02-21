@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { SectionType } from 'src/app/models/non-pathological-personal-background-types.model';
 import { NonPathologicalPersonalBackground } from 'src/app/models/non-pathological-personal-background.model';
+import { SectionType } from 'src/app/models/section-type.model';
 import { NonPathologicalPersonalBackgroundService } from 'src/app/services/non-pathological-personal-background.service';
 
 @Component({

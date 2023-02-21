@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrenConditionsComponent } from './current-conditions.component';
+import { CurrentConditionsComponent } from './current-conditions.component';
 
 describe('CurrenConditionsComponent', () => {
-  let component: CurrenConditionsComponent;
-  let fixture: ComponentFixture<CurrenConditionsComponent>;
+  let component: CurrentConditionsComponent;
+  let fixture: ComponentFixture<CurrentConditionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CurrenConditionsComponent ]
+      declarations: [ CurrentConditionsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CurrenConditionsComponent);
+    fixture = TestBed.createComponent(CurrentConditionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

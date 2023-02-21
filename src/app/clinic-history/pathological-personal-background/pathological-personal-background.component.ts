@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { SectionType } from 'src/app/models/pathological-personal-background-type.model';
 import { PathologicalPersonalBackgroundTypesService } from 'src/app/services/pathological-personal-background-types.service';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { PathologicalPersonalBackground } from 'src/app/models/pathological-personal-background.model';
+import { SectionType } from 'src/app/models/section-type.model';
 
 @Component({
   selector: 'app-pathological-personal-background',

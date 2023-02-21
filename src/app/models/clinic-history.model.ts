@@ -1,3 +1,4 @@
+import { FamilyBackground } from "./family-background.model";
 import { PathologicalPersonalBackground } from "./pathological-personal-background.model";
 import { PatientRequestModel } from "./patient.model";
 
@@ -8,8 +9,11 @@ export class ClinicHistoryRequestModel {
     public patientId?: number | null;
     public patient: PatientRequestModel | null;
     public pathologicalPersonalBackgrounds: PathologicalPersonalBackground[] | null;
-    public familyBackgroundObservations: string | null;
     public nonPathologicalPersonalBackgrounds: PathologicalPersonalBackground[] | null;
+    public familyBackgrounds: FamilyBackground[] | null;
+
+    public currentConditionsObservations: string | null;
+    public familyBackgroundObservations: string | null;
 
     /**
      *
@@ -21,8 +25,11 @@ export class ClinicHistoryRequestModel {
         this.patientId = null;
         this.patient = null;
         this.pathologicalPersonalBackgrounds = null;
-        this.familyBackgroundObservations = null;
         this.nonPathologicalPersonalBackgrounds = null;
+        this.familyBackgrounds = null;
+
+        this.familyBackgroundObservations = null;
+        this.currentConditionsObservations = null;
     }
 }
 
