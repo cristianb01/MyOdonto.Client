@@ -2,14 +2,23 @@
 
 <div class="py-3">
     <form *ngIf="currentConditionsForm" [formGroup]="currentConditionsForm">
-        <div class="row">
-            <div class="col-12" *ngFor="let currentForm of getFormArray.controls; index as i">
+            <div class="w-50 px-3" *ngFor="let currentForm of getFormArray.controls; index as i">
                 <ng-container formArrayName="mainForm">
                     <ng-container [formGroupName]="i">
-                        <mat-checkbox formControlName="hasSufferedFrom">{{ currentForm.get('description')?.value }}</mat-checkbox>
+                        <section class="d-flex justify-content-between">
+                            <span class="align-self-center">{{ currentForm.get('description')?.value }}</span>
+                            <span>
+                                <span>
+                                    <mat-checkbox formControlName="hasSufferedFrom">Sí</mat-checkbox>
+                                </span>
+                                <span>
+                                    <mat-checkbox [checked]="!currentForm.get('hasSufferedFrom')?.value" (change)="noCheckboxChecked(currentForm)">No</mat-checkbox>
+                                </span>
+                            </span>
+                        </section>
+                        <!-- <mat-checkbox formControlName="hasSufferedFrom">{{ currentForm.get('description')?.value }}</mat-checkbox> -->
                     </ng-container>
                 </ng-container>
             </div>
-        </div>
     </form>
 </div>

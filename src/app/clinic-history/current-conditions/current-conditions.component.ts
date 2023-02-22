@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { CurrenConditionFormResultWrapper, CurrentCondition } from 'src/app/models/current-conditions.model';
 import { SectionType } from 'src/app/models/section-type.model';
 import { CurrentConditionsService } from 'src/app/services/current-conditions.service';
@@ -33,7 +33,7 @@ export class CurrentConditionsComponent {
       return this.formBuilder.group({
         description: type.description,
         id: type.id,
-        hasSuferedFrom: false
+        hasSufferedFrom: false
       });
     });
 
@@ -59,6 +59,10 @@ export class CurrentConditionsComponent {
         } as CurrentCondition
       })
     }
+  }
+
+  public noCheckboxChecked(currentForm: AbstractControl): void {
+    currentForm.get('hasSufferedFrom')?.setValue(false);
   }
 
   public get getFormArray(): FormArray {
