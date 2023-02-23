@@ -9,6 +9,7 @@ import { ClinicHistoryService } from 'src/app/services/clinic-history.service';
 import { PatientsService as PatientService } from 'src/app/services/patients.service';
 import { ClinicHistoryPatientSectionComponent } from '../clinic-history-patient-section/clinic-history-patient-section.component';
 import { CurrentConditionsComponent } from '../current-conditions/current-conditions.component';
+import { FacialAnalysisComponent } from '../facial-analysis/facial-analysis.component';
 import { FamilyBackgroundComponent } from '../family-background/family-background.component';
 import { NonPathologicalPersonalBackgroundComponent } from '../non-pathological-personal-background/non-pathological-personal-background.component';
 import { PathologicalPersonalBackgroundComponent } from '../pathological-personal-background/pathological-personal-background.component';
@@ -25,6 +26,7 @@ export class ClinicHistoryContainerComponent {
   @ViewChild('familyBackground') familyBackgroundForm!: FamilyBackgroundComponent;
   @ViewChild('nonPathologicalPersonalBackgroundForm') nonPathologicalPersonalBackgroundForm!: NonPathologicalPersonalBackgroundComponent;
   @ViewChild('currentConditionsForm') currentConditionsForm!: CurrentConditionsComponent;
+  @ViewChild('facialAnalysisForm') facialAnalysisForm!: FacialAnalysisComponent;
 
   public clinicHistory: ClinicHistoryRequestModel = new ClinicHistoryRequestModel();
 
@@ -46,6 +48,7 @@ export class ClinicHistoryContainerComponent {
       && this.familyBackgroundForm.submit()
       && this.nonPathologicalPersonalBackgroundForm.submit()
       && this.currentConditionsForm.submit()
+      && this.facialAnalysisForm.submit()
     ) {
       this.clinicHistory.creationDate = new Date(),
       this.clinicHistory.doctorId = 1, // TODO: remove
@@ -69,6 +72,9 @@ export class ClinicHistoryContainerComponent {
       if (sectionName === SectionNames.currentConditions) {
         this.clinicHistory.currentConditionsObservations = $event.observations
         $event = $event.currentConditions
+      }
+      if (sectionName === SectionNames.facialAnalysis) {
+        this.clinicHistory.facialAnalysisObservations = $event.observations;
       }
       (this.clinicHistory)[sectionName as keyof ClinicHistoryRequestModel] = $event;
     }

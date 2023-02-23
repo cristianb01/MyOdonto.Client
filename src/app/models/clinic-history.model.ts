@@ -14,6 +14,7 @@ export class ClinicHistoryRequestModel {
 
     public currentConditionsObservations: string | null;
     public familyBackgroundObservations: string | null;
+    public facialAnalysisObservations: string | null;
 
     /**
      *
@@ -30,6 +31,7 @@ export class ClinicHistoryRequestModel {
 
         this.familyBackgroundObservations = null;
         this.currentConditionsObservations = null;
+        this.facialAnalysisObservations = null;
     }
 }
 

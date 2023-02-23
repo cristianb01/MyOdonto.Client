@@ -3,5 +3,6 @@ export const SectionNames = {
     pathologicalPersonalBackgrounds: 'pathologicalPersonalBackgrounds',
     familyBackgrounds: 'familyBackgrounds',
     nonPathologicalPersonalBackgrounds: 'nonPathologicalPersonalBackgrounds',
-    currentConditions: 'currentConditions'
+    currentConditions: 'currentConditions',
+    facialAnalysis: 'facialAnalysis'
 }
