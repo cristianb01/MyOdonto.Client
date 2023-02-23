@@ -19,6 +19,7 @@ import { AppCommonModule } from '../app-common/app-common.module';
 import {MatTableModule} from '@angular/material/table';
 import { NonPathologicalPersonalBackgroundComponent } from './non-pathological-personal-background/non-pathological-personal-background.component';
 import { CurrentConditionsComponent as CurrentConditionsComponent } from './current-conditions/current-conditions.component';
+import { FacialAnalysisComponent } from './facial-analysis/facial-analysis.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CurrentConditionsComponent as CurrentConditionsComponent } from './curr
     PathologicalPersonalBackgroundComponent,
     FamilyBackgroundComponent,
     NonPathologicalPersonalBackgroundComponent,
-    CurrentConditionsComponent
+    CurrentConditionsComponent,
+    FacialAnalysisComponent
 
   ],
   imports: [
