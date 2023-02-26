@@ -4,22 +4,22 @@ import { PathologicalPersonalBackgroundTypesService } from 'src/app/services/pat
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { PathologicalPersonalBackground } from 'src/app/models/pathological-personal-background.model';
 import { SectionType } from 'src/app/models/section-type.model';
+import { BaseClinicHistorySectionComponent } from '../base-clinic-history-section/base-clinic-history-section.component';
 
 @Component({
   selector: 'app-pathological-personal-background',
   templateUrl: './pathological-personal-background.component.html',
   styleUrls: ['./pathological-personal-background.component.scss']
 })
-export class PathologicalPersonalBackgroundComponent {
+export class PathologicalPersonalBackgroundComponent extends BaseClinicHistorySectionComponent{
 
   public pathologicalPersonalBackgroundTypes!: SectionType[];
 
   pathologicalPersonalBackgroundForm!: FormGroup;;
 
-  @Output() onFormSubmit = new EventEmitter<any>();
-
   constructor(private pathologicalPersonalBackgroundService: PathologicalPersonalBackgroundTypesService,
               private formbuilder: FormBuilder) {
+    super();
     this.getAllPathologicalPersonalBackgroundTypes()
       .then(pathologicalPersonalBackgroundTypes => {
         this.pathologicalPersonalBackgroundTypes = pathologicalPersonalBackgroundTypes;
@@ -49,10 +49,6 @@ export class PathologicalPersonalBackgroundComponent {
     });
   }
 
-  public get getFormArray(): FormArray {
-    return this.pathologicalPersonalBackgroundForm.get('mainForm') as FormArray;
-  }
-
   public isFormInvalid(formId: number, controlName: string): boolean {
     const form = this.getFormArray.at(formId);
 
@@ -61,16 +57,8 @@ export class PathologicalPersonalBackgroundComponent {
     return control.invalid;
   }
 
-  public submit(): boolean {
-    if (this.pathologicalPersonalBackgroundForm.valid) {
-      const mappedModel = this.mapFormToModel();
-      this.onFormSubmit.emit(mappedModel);
-      return true;
-    }
-    return false;
-  }
 
-  private mapFormToModel(): PathologicalPersonalBackground[] {
+  protected override mapFormToModel(): PathologicalPersonalBackground[] {
     const output = this.getFormArray.controls.map(currentForm => {
       return {
         date: currentForm.get('date')?.value,

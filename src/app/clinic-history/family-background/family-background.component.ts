@@ -4,15 +4,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FamilyBackground, FamilyBackgroundFormResultWrapper } from 'src/app/models/family-background.model';
 import { SectionType } from 'src/app/models/section-type.model';
 import { FamilyBackgroundService } from 'src/app/services/family-background.service';
+import { BaseClinicHistorySectionComponent } from '../base-clinic-history-section/base-clinic-history-section.component';
 
 @Component({
   selector: 'app-family-background',
   templateUrl: './family-background.component.html',
   styleUrls: ['./family-background.component.scss']
 })
-export class FamilyBackgroundComponent {
-
-  @Output() onFormSubmit = new EventEmitter<any>();
+export class FamilyBackgroundComponent extends BaseClinicHistorySectionComponent {
 
   public familyBackgroundTypes!: SectionType[];
 
@@ -27,7 +26,8 @@ export class FamilyBackgroundComponent {
   constructor(private familyBackgroundService: FamilyBackgroundService,
               private formBuilder: FormBuilder) {
 
-    this.getFamilyBackgroundTypes().then(familyBackgroundTypes => {
+      super();
+      this.getFamilyBackgroundTypes().then(familyBackgroundTypes => {
       this.familyBackgroundTypes = familyBackgroundTypes;
       this.familyBackgroundForm = this.createForm();
       this.dataSource.data = this.getFormArray.getRawValue();
@@ -61,13 +61,7 @@ export class FamilyBackgroundComponent {
     return this.familyBackgroundService.getAllFamilyBackgroundTypes();
   }
 
-  public submit(): boolean {
-    const mappedModel = this.mapFormToModel();
-    this.onFormSubmit.emit(mappedModel);
-    return true;
-  }
-
-  private mapFormToModel(): FamilyBackgroundFormResultWrapper  {
+  protected override mapFormToModel(): FamilyBackgroundFormResultWrapper  {
     return {
         observations: this.familyBackgroundForm.get('observations')?.value,
         familyBackgrounds: this.getFormArray.controls.map(currentForm => {
@@ -85,9 +79,5 @@ export class FamilyBackgroundComponent {
          } as FamilyBackground
        })
     }
-  }
-
-  public get getFormArray(): FormArray {
-    return this.familyBackgroundForm.get('mainForm') as FormArray;
   }
 }

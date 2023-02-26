@@ -2,22 +2,21 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FacialAnalysisAspect, FacialAnalysisCharacteristic, FacialAnalysisCharacteristicRequestModel, FacialAnalysisFormResultWrapper } from 'src/app/models/facial-analysis.model';
 import { FacialAnalysisService } from 'src/app/services/facial-analysis.service';
+import { BaseClinicHistorySectionComponent } from '../base-clinic-history-section/base-clinic-history-section.component';
 
 @Component({
   selector: 'app-facial-analysis',
   templateUrl: './facial-analysis.component.html',
   styleUrls: ['./facial-analysis.component.scss']
 })
-export class FacialAnalysisComponent {
-
-  @Output() onFormSubmit = new EventEmitter<FacialAnalysisFormResultWrapper>();
+export class FacialAnalysisComponent extends BaseClinicHistorySectionComponent {
 
   public facialAnalysisAscpects!: FacialAnalysisAspect[]
-  public form!: FormGroup;
 
   constructor(private facialAnalysisService: FacialAnalysisService,
               private formBuilder: FormBuilder) {
-    this.facialAnalysisService.geatAllFacialAnalysisAspects().then(aspects => {
+      super();
+      this.facialAnalysisService.geatAllFacialAnalysisAspects().then(aspects => {
       this.facialAnalysisAscpects = aspects;
       this.form = this.createForm();
     });
@@ -33,18 +32,12 @@ export class FacialAnalysisComponent {
     });
 
     return this.formBuilder.group({
-      observations: '',
+      observations: null,
       mainForm: this.formBuilder.array(forms)
     });
   }
 
-  public submit(): boolean {
-    const mappedModel = this.mapFormToModel();
-    this.onFormSubmit.emit(mappedModel);
-    return true;
-  }
-
-  public mapFormToModel(): FacialAnalysisFormResultWrapper {
+  protected override mapFormToModel(): FacialAnalysisFormResultWrapper {
     return {
       observations: this.form.get('observations')?.value,
       facialAnalysisCharacteristics: this.getFormArray.controls.map(currentForm => {
@@ -53,10 +46,6 @@ export class FacialAnalysisComponent {
         } as FacialAnalysisCharacteristicRequestModel
       })
     } as FacialAnalysisFormResultWrapper
-  }
-
-  public get getFormArray(): FormArray {
-    return this.form.get('mainForm') as FormArray;
   }
 
   public getCharacteristics(aspectId: number): FacialAnalysisCharacteristic[] {

@@ -73,8 +73,7 @@ export class ClinicHistoryPatientSectionComponent implements OnChanges {
 
   
   private mapFormToPatientModel(): PatientRequestModel | number {
-    // TODO: send only patientId when patient has been feeded
-    if (this.isPatientInfoRetrieved) return this.patientForm.controls['id'].value;
+    if (this.isPatientInfoRetrieved) return this.patientForm. controls['id'].value;
     let output: PatientRequestModel = {
       identification: this.patientForm.controls['identification'].value,
       name: this.patientForm.controls['name'].value,

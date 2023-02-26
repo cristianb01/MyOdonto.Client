@@ -75,6 +75,7 @@ export class ClinicHistoryContainerComponent {
       }
       if (sectionName === SectionNames.facialAnalysis) {
         this.clinicHistory.facialAnalysisObservations = $event.observations;
+        $event = $event.facialAnalysisCharacteristics
       }
       (this.clinicHistory)[sectionName as keyof ClinicHistoryRequestModel] = $event;
     }

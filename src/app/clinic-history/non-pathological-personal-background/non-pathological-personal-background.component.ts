@@ -3,15 +3,15 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { NonPathologicalPersonalBackground } from 'src/app/models/non-pathological-personal-background.model';
 import { SectionType } from 'src/app/models/section-type.model';
 import { NonPathologicalPersonalBackgroundService } from 'src/app/services/non-pathological-personal-background.service';
+import { BaseClinicHistorySectionComponent } from '../base-clinic-history-section/base-clinic-history-section.component';
 
 @Component({
   selector: 'app-non-pathological-personal-background',
   templateUrl: './non-pathological-personal-background.component.html',
   styleUrls: ['./non-pathological-personal-background.component.scss']
 })
-export class NonPathologicalPersonalBackgroundComponent {
+export class NonPathologicalPersonalBackgroundComponent extends BaseClinicHistorySectionComponent{
 
-  @Output() onFormSubmit = new EventEmitter<NonPathologicalPersonalBackground[]>();
 
   public nonPathologicalPersonalBackgroundForm!: FormGroup;
 
@@ -19,6 +19,7 @@ export class NonPathologicalPersonalBackgroundComponent {
 
   constructor(private nonPathologicalPersonalBackgroundService: NonPathologicalPersonalBackgroundService,
               private formBuilder: FormBuilder) {
+    super();
     this.nonPathologicalPersonalBackgroundService.getAllNonPathologicalPersonalBackgroundTypes()
       .then(nonPathologicalPersonalBackgroundTypes => {
         this.nonPathologicalPersonalBackgroundTypes = nonPathologicalPersonalBackgroundTypes;
@@ -41,13 +42,7 @@ export class NonPathologicalPersonalBackgroundComponent {
     });
   }
 
-  public submit(): boolean {
-    const mappedModel = this.mapFormToModel();
-    this.onFormSubmit.emit(mappedModel);
-    return true;
-  }
-
-  private mapFormToModel(): NonPathologicalPersonalBackground[] {
+  protected override mapFormToModel(): NonPathologicalPersonalBackground[] {
     return this.getFormArray.controls.map(currentForm => {
       return {
         hasSufferedFrom: currentForm.get('hasSufferedFrom')?.value,
@@ -55,9 +50,5 @@ export class NonPathologicalPersonalBackgroundComponent {
         observations: currentForm.get('observation')?.value
       } as NonPathologicalPersonalBackground
     });
-  }
-
-  public get getFormArray(): FormArray {
-    return this.nonPathologicalPersonalBackgroundForm.get('mainForm') as FormArray;
   }
 }

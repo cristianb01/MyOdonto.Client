@@ -3,22 +3,22 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/for
 import { CurrenConditionFormResultWrapper, CurrentCondition } from 'src/app/models/current-conditions.model';
 import { SectionType } from 'src/app/models/section-type.model';
 import { CurrentConditionsService } from 'src/app/services/current-conditions.service';
+import { BaseClinicHistorySectionComponent } from '../base-clinic-history-section/base-clinic-history-section.component';
 
 @Component({
   selector: 'app-current-conditions',
   templateUrl: './current-conditions.component.html',
   styleUrls: ['./current-conditions.component.scss']
 })
-export class CurrentConditionsComponent {
-  
-  @Output() onFormSubmit = new EventEmitter<CurrenConditionFormResultWrapper>();
+export class CurrentConditionsComponent extends BaseClinicHistorySectionComponent {
 
   public currentConditionsForm!: FormGroup;
   public currenConditionsTypes!: SectionType[];
 
   constructor(private currentConditionsService: CurrentConditionsService,
               private formBuilder: FormBuilder) {
-    this.getCurrentConditionsTypes().then(types => {
+      super();
+      this.getCurrentConditionsTypes().then(types => {
       this.currenConditionsTypes = types;
       this.currentConditionsForm = this.createForm();
     });
@@ -38,18 +38,13 @@ export class CurrentConditionsComponent {
     });
 
     return this.formBuilder.group({
-      observations: '',
+      observations: null,
       mainForm: this.formBuilder.array(forms)
     });
   }
 
-  public submit(): boolean {
-    const mappedModel = this.mapFormToModel();
-    this.onFormSubmit.emit(mappedModel);
-    return true;
-  }
 
-  private mapFormToModel(): CurrenConditionFormResultWrapper {
+  protected override mapFormToModel(): CurrenConditionFormResultWrapper {
     return {
       observations: this.currentConditionsForm.get('observations')?.value,
       currentConditions: this.getFormArray.controls.map(currentForm => {
@@ -63,9 +58,5 @@ export class CurrentConditionsComponent {
 
   public noCheckboxChecked(currentForm: AbstractControl): void {
     currentForm.get('hasSufferedFrom')?.setValue(false);
-  }
-
-  public get getFormArray(): FormArray {
-    return this.currentConditionsForm.get('mainForm') as FormArray;
   }
 }

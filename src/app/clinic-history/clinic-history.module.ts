@@ -20,6 +20,8 @@ import {MatTableModule} from '@angular/material/table';
 import { NonPathologicalPersonalBackgroundComponent } from './non-pathological-personal-background/non-pathological-personal-background.component';
 import { CurrentConditionsComponent as CurrentConditionsComponent } from './current-conditions/current-conditions.component';
 import { FacialAnalysisComponent } from './facial-analysis/facial-analysis.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { BaseClinicHistorySectionComponent } from './base-clinic-history-section/base-clinic-history-section.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { FacialAnalysisComponent } from './facial-analysis/facial-analysis.compo
     FamilyBackgroundComponent,
     NonPathologicalPersonalBackgroundComponent,
     CurrentConditionsComponent,
-    FacialAnalysisComponent
+    FacialAnalysisComponent,
+    BaseClinicHistorySectionComponent as unknown as any[]
 
   ],
   imports: [
@@ -48,7 +51,8 @@ import { FacialAnalysisComponent } from './facial-analysis/facial-analysis.compo
     MatFormFieldModule,
     MatButtonModule,
     AppCommonModule,
-    MatTableModule
+    MatTableModule,
+    MatRadioModule
   ],
   exports: [MatFormFieldModule]
 })

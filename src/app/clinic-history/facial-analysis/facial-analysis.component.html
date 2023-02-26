@@ -10,12 +10,14 @@
                             <span class="mat-body-strong align-self-center">{{ currentForm.get('description')?.value }}</span>
                         </div>
                         <div class="col-7">
+                            <mat-radio-group formControlName="characteristicId">
                             <div class="row row-cols-3">
-                                <div class="col" 
-                                     *ngFor="let characteristic of getCharacteristics(currentForm.get('aspectId')?.value)">
-                                     <mat-checkbox (change)=" currentForm.get('characteristicId')?.setValue(characteristic.id) ">{{ characteristic.description }}</mat-checkbox>
+                                    <div class="col" 
+                                         *ngFor="let characteristic of getCharacteristics(currentForm.get('aspectId')?.value)">
+                                         <mat-radio-button [value]="characteristic.id">{{ characteristic.description }}</mat-radio-button>
+                                    </div>
                                 </div>
-                            </div>
+                            </mat-radio-group>
                         </div>
                     </ng-container>
                 </div>
