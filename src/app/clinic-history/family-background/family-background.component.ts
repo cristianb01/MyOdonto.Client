@@ -15,8 +15,6 @@ export class FamilyBackgroundComponent extends BaseClinicHistorySectionComponent
 
   public familyBackgroundTypes!: SectionType[];
 
-  public familyBackgroundForm!: FormGroup;
-
   public headers = ['description', 'mother', 'maternalGrandmother', 'maternalGrandfather', 'maternalOthers',
                     'father', 'paternalGrandmother', 'paternalGrandfather', 'paternalOthers'];
 
@@ -29,7 +27,7 @@ export class FamilyBackgroundComponent extends BaseClinicHistorySectionComponent
       super();
       this.getFamilyBackgroundTypes().then(familyBackgroundTypes => {
       this.familyBackgroundTypes = familyBackgroundTypes;
-      this.familyBackgroundForm = this.createForm();
+      this.form = this.createForm();
       this.dataSource.data = this.getFormArray.getRawValue();
     });
   }
@@ -63,7 +61,7 @@ export class FamilyBackgroundComponent extends BaseClinicHistorySectionComponent
 
   protected override mapFormToModel(): FamilyBackgroundFormResultWrapper  {
     return {
-        observations: this.familyBackgroundForm.get('observations')?.value,
+        observations: this.form.get('observations')?.value,
         familyBackgrounds: this.getFormArray.controls.map(currentForm => {
          return {
            brother: currentForm.get('brother')?.value,

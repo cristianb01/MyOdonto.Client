@@ -1,6 +1,6 @@
 <app-section-header [title]="'Antecedentes familiares y hereditarios'"></app-section-header>
 <div class="py-3">
-    <form *ngIf="familyBackgroundForm" [formGroup]="familyBackgroundForm">
+    <form *ngIf="form" [formGroup]="form">
         <table mat-table [dataSource]="dataSource" formArrayName="mainForm">
             <tr mat-header-row *matHeaderRowDef="headers"></tr>
             <tr mat-row *matRowDef="let row; let i = index; columns: headers"></tr>

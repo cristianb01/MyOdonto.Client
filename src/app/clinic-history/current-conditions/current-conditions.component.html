@@ -1,7 +1,7 @@
 <app-section-header title="Padecimientos actuales"></app-section-header>
 
 <div class="py-3">
-    <form *ngIf="currentConditionsForm" [formGroup]="currentConditionsForm">
+    <form *ngIf="form" [formGroup]="form">
             <div class="px-3" *ngFor="let currentForm of getFormArray.controls; index as i">
                 <ng-container formArrayName="mainForm">
                     <ng-container [formGroupName]="i">

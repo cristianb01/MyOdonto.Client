@@ -1,7 +1,7 @@
 <app-section-header title="Antecedentes personales no hereditarios"></app-section-header>
 
 <div class="py-3">
-    <form *ngIf="nonPathologicalPersonalBackgroundForm" [formGroup]="nonPathologicalPersonalBackgroundForm">
+    <form *ngIf="form" [formGroup]="form">
         <div class="row row-cols-3 d-flex justify-content-between">
             <div class="col" *ngFor="let currentForm of getFormArray.controls; index as i">
                 <ng-container formArrayName="mainForm">

@@ -15,15 +15,13 @@ export class PathologicalPersonalBackgroundComponent extends BaseClinicHistorySe
 
   public pathologicalPersonalBackgroundTypes!: SectionType[];
 
-  pathologicalPersonalBackgroundForm!: FormGroup;;
-
   constructor(private pathologicalPersonalBackgroundService: PathologicalPersonalBackgroundTypesService,
               private formbuilder: FormBuilder) {
     super();
     this.getAllPathologicalPersonalBackgroundTypes()
       .then(pathologicalPersonalBackgroundTypes => {
         this.pathologicalPersonalBackgroundTypes = pathologicalPersonalBackgroundTypes;
-        this.pathologicalPersonalBackgroundForm = this.createForm();
+        this.form = this.createForm();
         this.startChekingHasSufferedFromCheckBox();
       });;
   }

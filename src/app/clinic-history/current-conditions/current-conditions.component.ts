@@ -12,7 +12,6 @@ import { BaseClinicHistorySectionComponent } from '../base-clinic-history-sectio
 })
 export class CurrentConditionsComponent extends BaseClinicHistorySectionComponent {
 
-  public currentConditionsForm!: FormGroup;
   public currenConditionsTypes!: SectionType[];
 
   constructor(private currentConditionsService: CurrentConditionsService,
@@ -20,7 +19,7 @@ export class CurrentConditionsComponent extends BaseClinicHistorySectionComponen
       super();
       this.getCurrentConditionsTypes().then(types => {
       this.currenConditionsTypes = types;
-      this.currentConditionsForm = this.createForm();
+      this.form = this.createForm();
     });
   }
 
@@ -46,7 +45,7 @@ export class CurrentConditionsComponent extends BaseClinicHistorySectionComponen
 
   protected override mapFormToModel(): CurrenConditionFormResultWrapper {
     return {
-      observations: this.currentConditionsForm.get('observations')?.value,
+      observations: this.form.get('observations')?.value,
       currentConditions: this.getFormArray.controls.map(currentForm => {
         return {
           currentConditionTypeId: currentForm.get('id')?.value,

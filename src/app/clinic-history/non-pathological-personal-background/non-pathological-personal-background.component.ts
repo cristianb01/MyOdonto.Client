@@ -12,9 +12,6 @@ import { BaseClinicHistorySectionComponent } from '../base-clinic-history-sectio
 })
 export class NonPathologicalPersonalBackgroundComponent extends BaseClinicHistorySectionComponent{
 
-
-  public nonPathologicalPersonalBackgroundForm!: FormGroup;
-
   public nonPathologicalPersonalBackgroundTypes!: SectionType[];
 
   constructor(private nonPathologicalPersonalBackgroundService: NonPathologicalPersonalBackgroundService,
@@ -23,7 +20,7 @@ export class NonPathologicalPersonalBackgroundComponent extends BaseClinicHistor
     this.nonPathologicalPersonalBackgroundService.getAllNonPathologicalPersonalBackgroundTypes()
       .then(nonPathologicalPersonalBackgroundTypes => {
         this.nonPathologicalPersonalBackgroundTypes = nonPathologicalPersonalBackgroundTypes;
-        this.nonPathologicalPersonalBackgroundForm = this.createForm();
+        this.form = this.createForm();
       });
   }
 
