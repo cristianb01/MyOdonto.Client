@@ -22,6 +22,7 @@ import { CurrentConditionsComponent as CurrentConditionsComponent } from './curr
 import { FacialAnalysisComponent } from './facial-analysis/facial-analysis.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { BaseClinicHistorySectionComponent } from './base-clinic-history-section/base-clinic-history-section.component';
+import { FunctionalAnalysisComponent } from './functional-analysis/functional-analysis.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BaseClinicHistorySectionComponent } from './base-clinic-history-section
     NonPathologicalPersonalBackgroundComponent,
     CurrentConditionsComponent,
     FacialAnalysisComponent,
-    BaseClinicHistorySectionComponent as unknown as any[]
+    BaseClinicHistorySectionComponent as unknown as any[],
+    FunctionalAnalysisComponent
 
   ],
   imports: [
