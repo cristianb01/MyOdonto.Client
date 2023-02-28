@@ -1,4 +1,5 @@
 import { FamilyBackground } from "./family-background.model";
+import { FunctionalAnalysisRequestModel } from "./functional-analysis.model";
 import { PathologicalPersonalBackground } from "./pathological-personal-background.model";
 import { PatientRequestModel } from "./patient.model";
 
@@ -11,10 +12,14 @@ export class ClinicHistoryRequestModel {
     public pathologicalPersonalBackgrounds: PathologicalPersonalBackground[] | null;
     public nonPathologicalPersonalBackgrounds: PathologicalPersonalBackground[] | null;
     public familyBackgrounds: FamilyBackground[] | null;
+    public facialAnalysis: FunctionalAnalysisRequestModel[] | null;
+    public functionalAnalysis: FunctionalAnalysisRequestModel[] | null;
 
     public currentConditionsObservations: string | null;
     public familyBackgroundObservations: string | null;
     public facialAnalysisObservations: string | null;
+    public functionalAnalysisObservations: string | null;
+
 
     /**
      *
@@ -28,10 +33,13 @@ export class ClinicHistoryRequestModel {
         this.pathologicalPersonalBackgrounds = null;
         this.nonPathologicalPersonalBackgrounds = null;
         this.familyBackgrounds = null;
+        this.facialAnalysis = null;
+        this.functionalAnalysis = null;
 
         this.familyBackgroundObservations = null;
         this.currentConditionsObservations = null;
         this.facialAnalysisObservations = null;
+        this.functionalAnalysisObservations = null;
     }
 }
 

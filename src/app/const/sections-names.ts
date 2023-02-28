@@ -4,5 +4,6 @@ export const SectionNames = {
     familyBackgrounds: 'familyBackgrounds',
     nonPathologicalPersonalBackgrounds: 'nonPathologicalPersonalBackgrounds',
     currentConditions: 'currentConditions',
-    facialAnalysis: 'facialAnalysis'
+    facialAnalysis: 'facialAnalysis',
+    functionalAnalysis: 'functionalAnalysis'
 }

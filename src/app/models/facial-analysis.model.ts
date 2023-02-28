@@ -6,7 +6,6 @@ export interface FacialAnalysisAspect extends SectionType {
 
 export interface FacialAnalysisCharacteristic extends SectionType {
     facialAnalysisAspectId: number;
-    facialAnalysisAspect: string;
 }
 
 export interface FacialAnalysisCharacteristicRequestModel {

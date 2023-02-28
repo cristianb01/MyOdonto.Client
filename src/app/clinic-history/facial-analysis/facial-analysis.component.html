@@ -4,7 +4,7 @@
     <form *ngIf="form" [formGroup]="form">
         <div class="container-fluid">
             <ng-container formArrayName="mainForm">
-                <div class="row" *ngFor="let currentForm of getFormArray.controls; index as i" [ngStyle]="{'background-color': i%2==0 ? '#f7f7f7' : 'unset'}">
+                <div class="row" *ngFor="let currentForm of getFormArray.controls; index as i" appStripedRows [rowIndex]="i">
                     <ng-container [formGroupName]="i"]>
                         <div class="col-5 d-flex">
                             <span class="mat-body-strong align-self-center">{{ currentForm.get('description')?.value }}</span>
@@ -22,6 +22,18 @@
                     </ng-container>
                 </div>
             </ng-container>
+            <div class="mt-5">
+                <mat-form-field style="width: 60%;">
+                    <mat-label>Observaciones</mat-label>
+                    <textarea matInput
+                              cdkTextareaAutosize
+                              #autosize="cdkTextareaAutosize"
+                              cdkAutosizeMinRows="1"
+                              cdkAutosizeMaxRows="5"
+                              formControlName="observations">
+                    </textarea>
+                </mat-form-field>
+            </div>
         </div>
     </form>
 </div>

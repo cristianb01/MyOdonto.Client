@@ -36,8 +36,7 @@ import { FunctionalAnalysisComponent } from './functional-analysis/functional-an
     CurrentConditionsComponent,
     FacialAnalysisComponent,
     BaseClinicHistorySectionComponent as unknown as any[],
-    FunctionalAnalysisComponent
-
+    FunctionalAnalysisComponent,
   ],
   imports: [
     CommonModule,
