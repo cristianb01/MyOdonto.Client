@@ -22,6 +22,7 @@ function startPencil() {
     }
 
     const camadaPincel = document.querySelector('#camadaPincel')
+    const navbar = document.querySelector('#navbar1')
     const contexto = camadaPincel.getContext('2d')
     const saveBtn = document.getElementById("saveBtn");
 
@@ -103,12 +104,12 @@ function startPencil() {
     }
 
     camadaPincel.onmousemove = (event) => {
-        pincel.destino.x = event.clientX - camadaPincel.offsetLeft
-        pincel.destino.y = event.clientY - camadaPincel.offsetTop
+        pincel.destino.x = event.clientX - camadaPincel.offsetLeft 
+        pincel.destino.y = event.clientY - camadaPincel.offsetTop - navbar.clientHeight
         pincel.movendo = true
 
         borracha.coordenadas.x = event.clientX - camadaPincel.offsetLeft
-        borracha.coordenadas.y = event.clientY - camadaPincel.offsetTop
+        borracha.coordenadas.y = event.clientY - camadaPincel.offsetTop - navbar.clientHeight
         borracha.movendo = true
     }
 
