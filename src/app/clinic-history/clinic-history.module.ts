@@ -23,6 +23,7 @@ import { FacialAnalysisComponent } from './facial-analysis/facial-analysis.compo
 import {MatRadioModule} from '@angular/material/radio';
 import { BaseClinicHistorySectionComponent } from './base-clinic-history-section/base-clinic-history-section.component';
 import { FunctionalAnalysisComponent } from './functional-analysis/functional-analysis.component';
+import { OdontogramModule } from '../odontogram/odontogram.module';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { FunctionalAnalysisComponent } from './functional-analysis/functional-an
     MatButtonModule,
     AppCommonModule,
     MatTableModule,
-    MatRadioModule
+    MatRadioModule,
+    OdontogramModule
   ],
   exports: [MatFormFieldModule]
 })
