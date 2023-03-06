@@ -1,4 +1,4 @@
-function startPincel() {
+function startPencil() {
     const pincel = {
         ativo: false,
         movendo: false,
@@ -73,7 +73,6 @@ function startPincel() {
     }
 
     const usaPincel = () => {
-        debugger;
 
         let ativo = false
         const usarPincel = document.getElementById("pincel").checked

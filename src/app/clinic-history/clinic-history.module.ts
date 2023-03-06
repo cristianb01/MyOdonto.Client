@@ -24,6 +24,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { BaseClinicHistorySectionComponent } from './base-clinic-history-section/base-clinic-history-section.component';
 import { FunctionalAnalysisComponent } from './functional-analysis/functional-analysis.component';
 import { OdontogramModule } from '../odontogram/odontogram.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { OdontogramModule } from '../odontogram/odontogram.module';
     AppCommonModule,
     MatTableModule,
     MatRadioModule,
-    OdontogramModule
+    OdontogramModule,
+    RouterModule,
   ],
   exports: [MatFormFieldModule]
 })
