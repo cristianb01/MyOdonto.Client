@@ -303,10 +303,8 @@ function startOdontogram(){
         let x = event.x
         let y = event.y
 
-        let navbar = document.querySelector('#navbar1');
         x -= camada1.offsetLeft
         y -= camada1.offsetTop
-        y -= navbar.clientHeight;
 
         procedimento.limpar()
         procedimento.indice = null
@@ -328,11 +326,9 @@ function startOdontogram(){
     camada4.onclick = (event) => {
         let x = event.x
         let y = event.y
-        let navbar = document.querySelector('#navbar1');
         
         x -= camada1.offsetLeft
         y -= camada1.offsetTop
-        y -= navbar.clientHeight;
 
         procedimento.limpar()
         procedimento.indice = null
