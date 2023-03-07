@@ -50,7 +50,8 @@ jobs:
         uses: actions/deploy-pages@v1
         
       - name: Build project
-        run: | 
+        run: |
+          cd..
           npm install
           ng build
         
