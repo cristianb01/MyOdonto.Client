@@ -27,34 +27,34 @@ function startOdontogram(){
     const alturaTelaReferencia = 872
 
     const itensProcedimento = [{
-        nome: 'Lesão branca ativa de cárie',
+        nome: 'Lesión de caries blanca activa',
         cor: '#008000'
     }, {
-        nome: 'Lesão branca inativa de cárie',
+        nome: 'Lesión de caries blanca inactiva',
         cor: '#FFFF00'
     }, {
-        nome: 'Lesão de cárie cavitada',
+        nome: 'Lesión de caries cavitada',
         cor: '#FF0000'
     }, {
-        nome: 'Cárie paralisada/ pigmentação do sulco',
+        nome: 'Caries paralizada/pigmentación del surco',
         cor: '#000000'
     }, {
-        nome: 'Restaurações em bom estado',
+        nome: 'Restauraciones en buen estado',
         cor: '#0000FF'
     }, {
-        nome: 'Restauração a ser trocada',
+        nome: 'Restauración para ser reemplazada',
         cor: '#FFC0CB'
     }, {
-        nome: 'Lesão cervical não- cariosa',
+        nome: 'Lesión cervical no cariosa',
         cor: '#8B0000'
     }, {
         nome: 'Faceta de desgaste',
         cor: '#FA8072'
     }, {
-        nome: 'Limpar seção',
+        nome: 'Limpiar sección',
         cor: '#FFFFFF'
     }, {
-        nome: 'Outro',
+        nome: 'Otro',
         cor: '#008080'
     }]
 
@@ -354,7 +354,7 @@ function startOdontogram(){
                         <input type="color" disabled class="form-control form-control-color" value="${item.cor}">
                     </td>
                     <td>
-                        ${item.informacoesAdicionais || 'NÃO INFORMADO'}
+                        ${item.informacoesAdicionais || 'Sin informaciones'}
                     </td>
                     <td>
                         <a onclick="apagar('${item.nome}', ${item.numeroDente}, ${item.faceDente})" class="btn btn-danger">
