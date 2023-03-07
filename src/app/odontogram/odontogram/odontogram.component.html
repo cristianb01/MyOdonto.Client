@@ -1,21 +1,21 @@
-<!-- <app-section-header title="Odontograma"></app-section-header> -->
+<app-section-header title="Odontograma"></app-section-header>
 <div class="">
-    <div id="control" class="container ">
+    <div id="control" class="mx-3">
         <div class="row">
             <div class="col-12 mt-2">
                 <div class="btn-group" role="group">
                     <input type="radio" class="btn-check" name="ferramenta" id="mouse" autocomplete="off" checked>
-                    <label class="btn btn-secondary" for="mouse"><i class="fas fa-mouse-pointer"></i></label>
+                    <label class="btn btn-outline-secondary" for="mouse"><i class="fas fa-mouse-pointer"></i></label>
     
                     <input class="btn-check" type="radio" name="ferramenta" id="pincel" value="option1">
-                    <label class="btn btn-secondary" for="pincel"><i class="fas fa-pencil-alt"></i></label>
+                    <label class="btn btn-outline-secondary" for="pincel"><i class="fas fa-pencil-alt"></i></label>
     
                     <input class="btn-check" type="radio" name="ferramenta" id="borracha" value="option2">
-                    <label class="btn btn-secondary" for="borracha"><i class="fas fa-eraser"></i></label>
+                    <label class="btn btn-outline-secondary" for="borracha"><i class="fas fa-eraser"></i></label>
     
                 </div>
                 <div class="btn-group" role="group">
-                    <button id="configBtn" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id="configBtn" type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -28,13 +28,13 @@
                             <input type="color" id="corPincel" class="form-control form-control-color" value="#563d7c" title="Choose your color">
                         </li>
                         <li style="margin: 5px;">
-                            <button id="limparDesenho" type="button" class="btn btn-secondary">
+                            <button id="limparDesenho" type="button" class="btn btn-outline-secondary">
                                 Borrar dibujo
                             </button>
                         </li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-secondary" id="saveBtn"><i class="fas fa-save"></i></button>
+                <button type="button" class="btn btn-outline-secondary" id="saveBtn" (click)="onSaveButtonClick()"><i class="fas fa-save"></i></button>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                             </select>
                         </div>
                         <div class="form-group col-12" id="colOutroProcedimento">
-                            <label for="outroProcedimento">Outro procedimento</label>
+                            <label for="outroProcedimento">Otro procedimento</label>
                             <i style="margin-left:5px;cursor: pointer;" class="alerta fas fa-info-circle fa-1x text-info" data-type="info" onclick="mensagens('.','info')"></i>
                             <input id="outroProcedimento" class="form-control" type="text">
                         </div>
@@ -77,7 +77,7 @@
                             <input type="color" id="cor" disabled class="form-control form-control-color" value="#563d7c" title="Choose your color">
                         </div>
                         <div class="form-group col-12">
-                            <label for="informacoesAdicionais">Informações adicionais</label>
+                            <label for="informacoesAdicionais">Informaciones adicionales</label>
                             <i style="margin-left:5px;cursor: pointer;" class="alerta fas fa-info-circle fa-1x text-info" data-type="info" onclick="mensagens('.','info')"></i>
                             <textarea rows="5" id="informacoesAdicionais" maxlength="5000" class="form-control"></textarea>
                         </div>
@@ -94,10 +94,10 @@
                                     <table class="table display dataTable table-bordered table-striped" id="tabelaTestesEspecificosForm">
                                         <thead>
                                             <tr>
-                                                <th>NOME</th>
-                                                <th>COR</th>
-                                                <th>INFORMAÇÕES ADICIONAIS</th>
-                                                <th class="text-center">AÇÕES</th>
+                                                <th>NOMBRE</th>
+                                                <th>COLOR</th>
+                                                <th>INFORMACIONES ADICIONALES</th>
+                                                <th class="text-center">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody id="bodyProcedimentos">
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
                 </div>
             </div>
         </div>
