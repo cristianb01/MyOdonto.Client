@@ -673,7 +673,7 @@ function startOdontogram(){
         if (window.innerWidth >= 800) {
             document.querySelector("#canva-group").style.display = 'display'
         } else {
-            alert("TELA MUITO PEQUENA! Acesse o odontrograma através de um dispositivo com uma tela maior!")
+            alert("Resolución muy baja. Por favor accede desde un dispositivo con una pantalla más grande")
             document.querySelector("#canva-group").style.display = 'none'
         }
 
