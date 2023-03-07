@@ -51,7 +51,7 @@ jobs:
         
       - name: Build project
         run: |
-          cd..
+          cd ..
           npm install
           ng build
         
