@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ClinicHistoryRequestModel, ClinicHistoryResponseModel } from '../models/clinic-history.model';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({
