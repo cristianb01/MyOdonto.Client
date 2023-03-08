@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://myodontoapiapi.azure-api.net/api',
+    apiUrl: 'https://localhost:7238/api',
 };
