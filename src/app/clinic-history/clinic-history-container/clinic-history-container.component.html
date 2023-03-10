@@ -21,9 +21,8 @@
     <app-functional-analysis #functionalAnalysisForm
         (onFormSubmit)="onFormSubmit($event, SectionNames.functionalAnalysis)">
     </app-functional-analysis>
-    <button mat-raised-button color="primary" style="display: block;" [routerLink]="'odontogram'">
+    <button mat-raised-button color="primary" style="display: block;" (click)="goToOdontogramPage()">
             Ir a Odontograma
     </button>
-
     <button type="button" class="btn btn-primary" (click)="submit()">Guardar</button>
 </div>

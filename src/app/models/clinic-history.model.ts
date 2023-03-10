@@ -1,5 +1,6 @@
 import { FamilyBackground } from "./family-background.model";
 import { FunctionalAnalysisRequestModel } from "./functional-analysis.model";
+import { Odontogram } from "./odontogram.model";
 import { PathologicalPersonalBackground } from "./pathological-personal-background.model";
 import { PatientRequestModel } from "./patient.model";
 
@@ -14,6 +15,7 @@ export class ClinicHistoryRequestModel {
     public familyBackgrounds: FamilyBackground[] | null;
     public facialAnalysis: FunctionalAnalysisRequestModel[] | null;
     public functionalAnalysis: FunctionalAnalysisRequestModel[] | null;
+    public odontogram: Odontogram | null;
 
     public currentConditionsObservations: string | null;
     public familyBackgroundObservations: string | null;
@@ -35,6 +37,7 @@ export class ClinicHistoryRequestModel {
         this.familyBackgrounds = null;
         this.facialAnalysis = null;
         this.functionalAnalysis = null;
+        this.odontogram = null;
 
         this.familyBackgroundObservations = null;
         this.currentConditionsObservations = null;

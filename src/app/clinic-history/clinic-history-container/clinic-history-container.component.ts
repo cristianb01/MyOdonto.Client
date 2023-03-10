@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { SectionNames } from 'src/app/const/sections-names';
 import { ClinicHistoryRequestModel, ClinicHistoryResponseModel } from 'src/app/models/clinic-history.model';
+import { mapLocalStorageOdontogramDataToModel, Odontogram } from 'src/app/models/odontogram.model';
 import { PathologicalPersonalBackground } from 'src/app/models/pathological-personal-background.model';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
 import { ClinicHistoryService } from 'src/app/services/clinic-history.service';
@@ -53,9 +54,11 @@ export class ClinicHistoryContainerComponent {
       && this.facialAnalysisForm.submit()
       && this.functionalAnalysisForm.submit()
     ) {
+      debugger;
       this.clinicHistory.creationDate = new Date(),
       this.clinicHistory.doctorId = 1, // TODO: remove
       this.clinicHistory.expedient = "123123"; // TODO: remove
+      this.clinicHistory.odontogram = this.mapOdontogramData();
       this.postClinicHistory();
     }
     else {
@@ -86,5 +89,13 @@ export class ClinicHistoryContainerComponent {
       }
       (this.clinicHistory)[sectionName as keyof ClinicHistoryRequestModel] = $event;
     }
+  }
+
+  private mapOdontogramData(): Odontogram {
+    return mapLocalStorageOdontogramDataToModel();
+  }
+
+  public goToOdontogramPage(): void {
+    window.open(`${window.location.toString()}/odontogram`, '_blank');
   }
 }
