@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://myodontoapiapi.azure-api.net/api',
+    apiUrl: 'https://myodontoapi.azure-api.net/api',
 };
