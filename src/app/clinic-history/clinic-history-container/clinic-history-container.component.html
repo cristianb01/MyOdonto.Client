@@ -1,5 +1,8 @@
 <div class="container p-5 mat-elevation-z10">
-    <app-clinic-history-header></app-clinic-history-header>
+    <app-clinic-history-header #headerForm
+        [doctor]="doctor"
+        (onFormSubmit)="onFormSubmit($event, SectionNames.header)">
+    </app-clinic-history-header>
     <app-clinic-history-patient-section #patientForm [patient]="loadedPatient"
         (onFormSubmit)="onFormSubmit($event, SectionNames.patient)">
     </app-clinic-history-patient-section>
@@ -26,3 +29,11 @@
     </button>
     <button type="button" class="btn btn-primary" (click)="submit()">Guardar</button>
 </div>
+
+<ng-template #snackBarTemplate>
+    <div class="container-fluid">
+        <h2 class="text-center">
+            Hay un error en el formulario
+        </h2>
+    </div>
+</ng-template>

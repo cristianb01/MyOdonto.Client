@@ -25,6 +25,7 @@ import { BaseClinicHistorySectionComponent } from './base-clinic-history-section
 import { FunctionalAnalysisComponent } from './functional-analysis/functional-analysis.component';
 import { OdontogramModule } from '../odontogram/odontogram.module';
 import { RouterModule } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { RouterModule } from '@angular/router';
     MatRadioModule,
     OdontogramModule,
     RouterModule,
+    MatSnackBarModule
   ],
   exports: [MatFormFieldModule]
 })

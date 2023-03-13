@@ -1,13 +1,17 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { debounceTime } from 'rxjs';
+import { FormValidationException } from 'src/app/app-common/exceptions/form-validation-exception';
 import { SectionNames } from 'src/app/const/sections-names';
 import { ClinicHistoryRequestModel, ClinicHistoryResponseModel } from 'src/app/models/clinic-history.model';
+import { Doctor } from 'src/app/models/doctor.model';
 import { mapLocalStorageOdontogramDataToModel, Odontogram } from 'src/app/models/odontogram.model';
 import { PathologicalPersonalBackground } from 'src/app/models/pathological-personal-background.model';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
 import { ClinicHistoryService } from 'src/app/services/clinic-history.service';
 import { PatientsService as PatientService } from 'src/app/services/patients.service';
+import { ClinicHistoryHeaderComponent } from '../clinic-history-header/clinic-history-header.component';
 import { ClinicHistoryPatientSectionComponent } from '../clinic-history-patient-section/clinic-history-patient-section.component';
 import { CurrentConditionsComponent } from '../current-conditions/current-conditions.component';
 import { FacialAnalysisComponent } from '../facial-analysis/facial-analysis.component';
@@ -30,6 +34,16 @@ export class ClinicHistoryContainerComponent {
   @ViewChild('currentConditionsForm') currentConditionsForm!: CurrentConditionsComponent;
   @ViewChild('facialAnalysisForm') facialAnalysisForm!: FacialAnalysisComponent;
   @ViewChild('functionalAnalysisForm') functionalAnalysisForm!: FunctionalAnalysisComponent;
+  @ViewChild('headerForm') headerForm!: ClinicHistoryHeaderComponent;
+
+  @ViewChild('snackBarTemplate') snackBarTemplate!: TemplateRef<any>;
+
+  public doctor: Doctor = {
+    id: 1,
+    name: 'Doctor',
+    surname: '1',
+    professionalIndentification: '102381029858'
+  } // TODO: Remove this
 
   public clinicHistory: ClinicHistoryRequestModel = new ClinicHistoryRequestModel();
 
@@ -37,7 +51,8 @@ export class ClinicHistoryContainerComponent {
 
   public readonly SectionNames = SectionNames;
 
-  constructor(private clinicHistoryService: ClinicHistoryService) {
+  constructor(private clinicHistoryService: ClinicHistoryService,
+              private snackbarService: MatSnackBar) {
   }
   
   private postClinicHistory(): Promise<ClinicHistoryResponseModel> {
@@ -45,25 +60,27 @@ export class ClinicHistoryContainerComponent {
   }
 
   public submit(): void {
-    if (
-      this.pathologicalPersonalBackgroundForm.submit() 
-      && this.patientForm.submit()
-      && this.familyBackgroundForm.submit()
-      && this.nonPathologicalPersonalBackgroundForm.submit()
-      && this.currentConditionsForm.submit()
-      && this.facialAnalysisForm.submit()
-      && this.functionalAnalysisForm.submit()
-    ) {
-      debugger;
-      this.clinicHistory.creationDate = new Date(),
-      this.clinicHistory.doctorId = 1, // TODO: remove
-      this.clinicHistory.expedient = "123123"; // TODO: remove
-      this.clinicHistory.odontogram = this.mapOdontogramData();
-      this.postClinicHistory();
+    try {
+      this.headerForm.submit();
+      this.pathologicalPersonalBackgroundForm.submit(); 
+      this.patientForm.submit();
+      this.familyBackgroundForm.submit();
+      this.nonPathologicalPersonalBackgroundForm.submit();
+      this.currentConditionsForm.submit();
+      this.facialAnalysisForm.submit();
+      this.functionalAnalysisForm.submit();
     }
-    else {
-      // TODO: alert of validation errors
+    catch(e: any) {
+      this.snackbarService.openFromTemplate(this.snackBarTemplate, {
+        duration: 3000,
+        horizontalPosition: 'right'
+      });
+      return;
     }
+    this.clinicHistory.creationDate = new Date();
+    this.clinicHistory.expedient ='123124203'; // TODO: Delete this
+    this.clinicHistory.odontogram = this.mapOdontogramData();
+    this.postClinicHistory().then();
   }
 
   public onFormSubmit($event: any, sectionName: string) {
@@ -88,6 +105,9 @@ export class ClinicHistoryContainerComponent {
         $event = $event.functionalAnalysisCharacteristics;
       }
       (this.clinicHistory)[sectionName as keyof ClinicHistoryRequestModel] = $event;
+    }
+    if (sectionName === SectionNames.header) {
+      this.clinicHistory.doctorId = $event;
     }
   }
 

@@ -23,7 +23,7 @@ export const mapLocalStorageOdontogramDataToModel = () => {
     let conditions: ConditionDataFromLocalStorage[] = JSON.parse(localStorage.getItem('procedimentos') as string);
     let drawing = localStorage.getItem('desenho') as string;
 
-    const parsedConditions: Condition[] = conditions.map(condition => {
+    const parsedConditions: Condition[] = conditions?.map(condition => {
         return {
             description: condition.nome,
             additionalInformation: condition.informacoesAdicionais,

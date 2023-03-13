@@ -1,4 +1,5 @@
 export const SectionNames = {
+    header: 'header',
     patient: 'patient',
     pathologicalPersonalBackgrounds: 'pathologicalPersonalBackgrounds',
     familyBackgrounds: 'familyBackgrounds',

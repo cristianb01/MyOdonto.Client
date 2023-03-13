@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormValidationException } from 'src/app/app-common/exceptions/form-validation-exception';
 import { Selects } from 'src/app/const/selects';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
 import { PatientsService as PatientService } from 'src/app/services/patients.service';
@@ -89,12 +90,13 @@ export class ClinicHistoryPatientSectionComponent implements OnChanges {
     return output;
   }
 
-  public submit(): boolean {
+  public submit(): void {
     if (this.patientForm.valid) {
         let patient = this.mapFormToPatientModel();
         this.onFormSubmit.emit(patient);
-        return true;
     }
-    return false;
+    else {
+      throw new FormValidationException("El formulario de paciente es invalido");
+    }
   }
 }

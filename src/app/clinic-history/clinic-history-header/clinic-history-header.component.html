@@ -1,27 +1,24 @@
-<div>
-    <div class="row">
-        <div class="col-4">
-            <img src="/src/assets/images/logo2.jpg" alt="company-logo">
-        </div>
-        <div class="col-4">
-            <h1 class="text-center">Historia Clínica</h1>
-            <p class="text-center" style="font-size: 60px;">Odontología</p>
-        </div>
-        <div class="col-4">
-            <form>
-                <div class="form-group">
-                    <label class="text-center col-form-label">Medico</label>
-                    <div class="col-form-control">
-                        <input type="text" class="form-control" name="attr_medico">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="text-center col-form-label">Cédula profesional</label>
-                    <div class="col-form-control">
-                        <input type="text" class="form-control" name="attr_medico">
-                    </div>
-                </div>
-            </form>
-        </div>
+<div class="row">
+    <div class="col-4">
+        <img src="/src/assets/images/logo2.jpg" alt="company-logo">
+    </div>
+    <div class="col-4">
+        <h1 class="text-center">Historia Clínica</h1>
+        <p class="text-center" style="font-size: 60px;">Odontología</p>
+    </div>
+    <div class="col-4">
+        <form class="d-flex justify-content-end" [formGroup]="form">
+            <div style="width: min-content">
+                <mat-form-field>
+                    <mat-label>Medico</mat-label>
+                    <input matInput formControlName="doctorName" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Cedula profesional</mat-label>
+                    <input matInput formControlName="identification">
+                </mat-form-field>
+
+            </div>
+        </form>
     </div>
 </div>
