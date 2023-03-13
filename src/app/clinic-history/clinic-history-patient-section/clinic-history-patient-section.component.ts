@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormValidationException } from 'src/app/app-common/exceptions/form-validation-exception';
 import { Selects } from 'src/app/const/selects';
 import { PatientRequestModel, PatientResponseModel } from 'src/app/models/patient.model';
@@ -24,7 +25,8 @@ export class ClinicHistoryPatientSectionComponent implements OnChanges {
   private isPatientInfoRetrieved: boolean = false;
 
   constructor(private patientService: PatientService,
-              private formbuilder: FormBuilder) {
+              private formbuilder: FormBuilder,
+              private snackBarService: MatSnackBar) {
     this.genders = Selects.Genders;
     this.maritalStatuses = Selects.MaritalStatuses;
     this.patientForm = this.createPatientForm();
@@ -52,7 +54,10 @@ export class ClinicHistoryPatientSectionComponent implements OnChanges {
     if (identification) {
       this.patientService.getPatient(identification)
         .then(patientResponse => {
-          if(patientResponse) this.loadPatientToForm(patientResponse);
+          if(patientResponse) {
+            this.loadPatientToForm(patientResponse);
+            this.snackBarService.open('Datos de paciente cargados', '', { duration: 3000 });
+          }
         });
     }
   }
